@@ -1,15 +1,5 @@
-# Common Commands to use in pwsh cli and their usages
-
-## Livewire Commands
-
-> php artisan make:livewire test
-This command crates new components files, namely the Class and the View files. These can be individually found under:
-- app/Livewire/test.php
-- resources/views/livewire/test.blade.php
-We also have to make sure that we register a route for the created component manually, this will be added in the file under "routes/web.php"
-
-> php artisan make:livewire CreatePost --inline
-This command creates an inline component within the class file.
+# Commands 
+Commands to use in pwsh cli and their usages (these also include the commands used for initializing the project for the first time).
 
 ## Creating the project for the first time
 Start PWSH
@@ -29,19 +19,30 @@ Start PWSH
 7. Which database will your application use? [MySQL]:
  > mysql
 ------------------------------------
-> npm run build
-> php artisan migrate
+> `npm run build`
+> `php artisan migrate`
 
 ## Testing Mailpit
 Test Mailpit
-> php artisan tinker
-> Mail::send('welcome', [], fn($message) => $message->to('admin@example.com')->subject('Testing mailpit'));
+> `php artisan tinker`
+> `Mail::send('welcome', [], fn($message) => $message->to('admin@example.com')->subject('Testing mailpit'));`
 
 ## Factory
 To create a new factory user
->php artisan tinker
->User::Factory()->Create() // to create a factory user. Default password will be 'password' without the quotes
+> `php artisan tinker`
+> `User::Factory()->Create()` // to create a factory user. Default password will be 'password' without the quotes
 
 ## Refreshing Migrations
 This will reset all entries into the database and return to default, run this in pwsh
-> php artisan migrate:fresh
+> `php artisan migrate:fresh`
+
+## Livewire Commands
+
+> `php artisan make:livewire test`
+This command crates new components files, namely the Class and the View files. These can be individually found under:
+- app/Livewire/test.php
+- resources/views/livewire/test.blade.php
+We also have to make sure that we register a route for the created component manually, this will be added in the file under "routes/web.php"
+
+> `php artisan make:livewire CreatePost --inline`
+This command creates an inline component within the class file.
