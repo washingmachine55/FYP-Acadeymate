@@ -26,3 +26,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
