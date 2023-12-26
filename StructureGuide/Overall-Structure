@@ -1,0 +1,79 @@
+## Sign ups
+Students can sign up
+Parents can sign up
+Lecturers can sign up
+Educational Admin can sign up
+Software Admin (Developer) default sign in
+
+All of these can sign up except Software Admins which will have to create an account manually.
+
+## Create Features
+- Educational Institutes can create batches
+- Lecturers can create subjects under each Module
+
+## Overall Structure
+Parent > Student > Lecturer > Edu Institute Admin > Dev Admin
+Class > Sections > Module > Batch > Edu Institute
+
+## Relationships
+Students can send requests to the email of their parents email to sign up
+Educational Admins need to send requests to be able to make changes to a certain school
+
+
+## Viewable by all
+- Educational Institute Profiles
+- Student Profiles
+- Lecturer Profiles
+
+## Students
+- Student ID (Local database)
+- Student ID (for Uni or Educational Institute) (foreignID / null allowed if not studying)
+- Student Name
+- Student DOB
+- Student Gender
+- Student Personal Email
+- Student's 2nd email
+- Student Bio (textarea)
+- Student's Parent ID (foreign / null allowed if parents did not signup)
+- Student current batch they are enrolled in (foreign ID / null if not enrolled under any)
+- Student's completed batches (foreign ID / null if none completed)
+- Current Subject's studying (foreign ID)
+
+## Parents
+- Parent ID (Local database)
+- Parent Name
+- Parent DOB
+- Parent Gender
+- Parent Personal Email
+- Parent of (Child ID) (foreign ID / null allowed if parents did not accept invite request)
+// - Batch ID enrolled under (foreign ID)
+
+## Lecturers
+- Lecturer ID (Local database)
+- Lecturer ID (for Uni or Educational Institute)
+- Lecturer Name
+- Lecturer DOB
+- Lecturer Gender
+- Lecturer Personal Email
+- Lecturer's 2nd email
+- Subjects in charge of (foreign ID)
+- ID of edu institute teaching under (foreign ID)
+
+## Batches
+- Batch ID (Local database)
+- Batch ID (for Uni or Educational Institute)
+- Batch Start date
+- Batch End data
+- Subject included in batch (foregin ID)
+- Students enrolled in Batch (foreign ID)
+- Students completed from Batch (foreign ID)
+
+## Educational Institute
+- Edu ID (Local database)
+- Edu Name
+- Edu Description
+- Edu External Website Link
+- Batch ID's under Edu Institute (foreign ID)
+- 
+
+

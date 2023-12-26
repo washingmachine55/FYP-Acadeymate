@@ -1,0 +1,172 @@
+<?php
+
+// Important Vars
+$subjectId = 1;
+$subjectName = "Subjects";
+$subjectDescription = "This is the subjects page.";
+$subjectBatch = 1;
+$subjectSemester = 1;
+$subjectYear = 1;
+$subjectTeacher = 1;
+$subjectStudents = 1;
+$subjectAssignments = 1;
+$subjectQuizzes = 1;
+$subjectExams = 1;
+$subjectLectures = 1;
+$subjectLabs = 1;
+$subjectTutorials = 1;
+$subjectProjects = 1;
+$subjectPresentations = 1;
+$subjectVideos = 1;
+$subjectNotes = 1;
+
+
+// Migrations
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+  /**
+   * Run the migrations.
+   */
+  public function up(): void
+  {
+    Schema::create('subjects', function (Blueprint $table) {
+      $table->id()->unique();
+      $table->string('subject_name');
+      $table->string('description');
+      $table->string('batch');
+      $table->string('semester');
+      $table->string('year');
+      $table->foreignId('teacher');
+      $table->foreignId('students');
+      $table->string('assignments');
+      $table->string('quizzes');
+      $table->string('exams');
+      $table->string('lectures');
+      $table->string('labs');
+      $table->string('tutorials');
+      $table->string('projects');
+      $table->string('presentations');
+      $table->string('videos');
+      $table->string('notes');
+      $table->foreignId('current_team_id')->nullable();
+      $table->timestamps();
+    });
+  }
+
+  /**
+   * Reverse the migrations.
+   */
+  public function down(): void
+  {
+    Schema::dropIfExists('users');
+  }
+};
+// Seeders
+
+// Model
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Sanctum\HasApiTokens;
+
+class Subjects
+{
+  use HasApiTokens;
+  use HasFactory;
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array<int, string>
+   */
+  protected $fillable = [
+    'subject_name', 'description', 'batch', 'semester', 'year', 'teacher', 'students', 'assignments', 'quizzes', 'exams', 'lectures', 'labs', 'tutorials', 'projects', 'presentations', 'videos', 'notes',
+  ];
+}
+
+// View 
+
+// Controller
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Jetstream\Jetstream;
+
+class CreateNewSubject implements CreatesNewSubjects
+{
+
+  /**
+   * Create a new subject.
+   *
+   * @param  array<string, string>  $input
+   */
+  public function create(array $input): Subjects
+  {
+    Validator::make($input, [
+      'subject_name' => ['required', 'string', 'max:255'],
+      'description' => ['required', 'string', 'max:255'],
+      'batch' => ['required', 'string', 'max:255'],
+      'semester' => ['required', 'string', 'max:255'],
+      'year' => ['required', 'string', 'max:255'],
+      'teacher' => ['required', 'string', 'max:255'],
+      'students' => ['required', 'string', 'max:255'],
+      'assignments' => ['required', 'string', 'max:255'],
+      'quizzes' => ['required', 'string', 'max:255'],
+      'exams' => ['required', 'string', 'max:255'],
+      'lectures' => ['required', 'string', 'max:255'],
+      'labs' => ['required', 'string', 'max:255'],
+      'tutorials' => ['required', 'string', 'max:255'],
+      'projects' => ['required', 'string', 'max:255'],
+      'presentations' => ['required', 'string', 'max:255'],
+      'videos' => ['required', 'string', 'max:255'],
+      'notes' => ['required', 'string', 'max:255'],
+      'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+    ])->validate();
+
+    return DB::transaction(function () use ($input) {
+      return tap(CreatesNewSubjects::create([
+        'subject_name' => $input['subject_name'],
+        'description' => $input['description'],
+        'batch' => $input['batch'],
+        'semester' => $input['semester'],
+        'year' => $input['year'],
+        'teacher' => $input['teacher'],
+        'students' => $input['students'],
+        'assignments' => $input['assignments'],
+        'quizzes' => $input['quizzes'],
+        'exams' => $input['exams'],
+        'lectures' => $input['lectures'],
+        'labs' => $input['labs'],
+        'tutorials' => $input['tutorials'],
+        'projects' => $input['projects'],
+        'presentations' => $input['presentations'],
+        'videos' => $input['videos'],
+        'notes' => $input['notes'],
+      ]));
+    });
+  }
+}
+
+// Interfaces
+
+interface CreatesNewSubjects
+{
+  /**
+   * Validate and create a subject.
+   *
+   * @param  array  $input
+   * @return \Illuminate\Foundation\Auth\User
+   */
+  public function create(array $input);
+}
+
+// Routes
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+  return view('user.profile');
+});
