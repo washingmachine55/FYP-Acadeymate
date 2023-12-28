@@ -9,13 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "doctrine/dbal": "^3.5.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/jetstream": "^4.1",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
-        "doctrine/dbal": "^3.5.1"
+        "spatie/laravel-permission": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -36,7 +37,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Controllers": "app/Http/Controolers/",
+            "Controllers\\": "app/Http/Controolers/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

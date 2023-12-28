@@ -1,9 +1,9 @@
 ## Sign ups
-Students can sign up
-Parents can sign up
-Lecturers can sign up
-Educational Admin can sign up
-Software Admin (Developer) default sign in
+Students can sign up **[Student]**
+Parents can sign up **[Guardian]** [Changed it from Parents as it conflicts with other classes and methods]
+Lecturers can sign up **[Lecturer]**
+Educational Admin can sign up **[EducationalInstituteAdmin]**
+Software Admin (Developer) default sign in **[DevAdmin]**
 
 All of these can sign up except Software Admins which will have to create an account manually.
 
@@ -25,7 +25,7 @@ Educational Admins need to send requests to be able to make changes to a certain
 - Student Profiles
 - Lecturer Profiles
 
-## Students
+## Student
 - Student ID (Local database)
 - Student ID (for Uni or Educational Institute) (foreignID / null allowed if not studying)
 - Student Name
@@ -39,13 +39,13 @@ Educational Admins need to send requests to be able to make changes to a certain
 - Student's completed batches (foreign ID / null if none completed)
 - Current Subject's studying (foreign ID)
 
-## Parents
-- Parent ID (Local database)
-- Parent Name
-- Parent DOB
-- Parent Gender
-- Parent Personal Email
-- Parent of (Child ID) (foreign ID / null allowed if parents did not accept invite request)
+## Guardian (Parent) 
+- Guardian ID (Local database)
+- Guardian Name
+- Guardian DOB
+- Guardian Gender
+- Guardian Personal Email
+- Guardian of (Child ID) (foreign ID / null allowed if parents did not accept invite request)
 // - Batch ID enrolled under (foreign ID)
 
 ## Lecturers
@@ -77,3 +77,5 @@ Educational Admins need to send requests to be able to make changes to a certain
 - 
 
 
+- Changed the tables to utilize UUIDs instead of normal IDs
+https://laraveldaily.com/post/laravel-users-table-change-primary-key-id-to-uuid

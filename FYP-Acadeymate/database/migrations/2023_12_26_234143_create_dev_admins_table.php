@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Uid\Ulid;
 
 return new class extends Migration
 {
@@ -11,16 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_user', function (Blueprint $table) {
+        Schema::create('dev_admins', function (Blueprint $table) {
             $table->id();
-            // $table->uuid('id');
             // $table->uuid('id')->primary();
-            $table->foreignId('team_id');
-            $table->foreignId('user_id');
-            $table->string('role')->nullable();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
-
-            $table->unique(['team_id', 'user_id']);
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_user');
+        Schema::dropIfExists('dev_admins');
     }
 };

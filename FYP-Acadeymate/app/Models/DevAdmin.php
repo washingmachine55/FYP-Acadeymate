@@ -2,30 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Spatie\Permission\Traits\HasRoles;
+// use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-
-class User extends Authenticatable
+class DevAdmin extends Authenticatable
 {
     use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
-    use HasTeams;
-    use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRoles;
-
+    use HasProfilePhoto;
+    use HasFactory;
     // use HasUuids;
+
+
 
     /**
      * The attributes that are mass assignable.
@@ -33,7 +26,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_role',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -55,7 +48,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-		// 'user_role' => 'string',
     ];
 
     /**
@@ -66,5 +58,4 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
 }

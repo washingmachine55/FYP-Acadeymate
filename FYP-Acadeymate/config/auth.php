@@ -40,6 +40,26 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'dev_admin' => [
+            'driver' => 'session',
+            'provider' => 'dev_admins',
+        ],
+        // 'educationalInstituteAdmin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'educational_institute_admins',
+        // ],
+        // 'guardian' => [
+        //     'driver' => 'session',
+        //     'provider' => 'guardians',
+        // ],
+        // 'student' => [
+        //     'driver' => 'session',
+        //     'provider' => 'students',
+        // ],
+        // 'lecturer' => [
+        //     'driver' => 'session',
+        //     'provider' => 'lecturers',
+        // ],
     ],
 
     /*
@@ -64,6 +84,26 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'dev_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\DevAdmin::class,
+        ],
+        // 'educational_institute_admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\EducationalInstituteAdmin::class,
+        // ],
+        // 'guardians' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Guardian::class,
+        // ],
+        // 'students' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Student::class,
+        // ],
+        // 'lecturers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Lecturer::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -97,6 +137,36 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'dev_admins' => [
+            'provider' => 'dev_admins',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        // 'educational_institute_admins' => [
+        //     'provider' => 'educational_institute_admins',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+        // 'guardians' => [
+        //     'provider' => 'guardians',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+        // 'students' => [
+        //     'provider' => 'students',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
+        // 'lecturers' => [
+        //     'provider' => 'lecturers',
+        //     'table' => 'password_reset_tokens',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

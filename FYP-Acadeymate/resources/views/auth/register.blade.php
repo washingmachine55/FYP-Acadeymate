@@ -11,34 +11,61 @@
 
             <div>
                 <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')"  autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"  autocomplete="username" />
             </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-input id="password" class="block w-full mt-1" type="password" name="password"  autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-input id="password_confirmation" class="block w-full mt-1" type="password" name="password_confirmation"  autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4" >
+                <x-label for="user_role" value="{{ __('Register As') }}" />
+					<div align="left" class="block mt-1 w-52">
+
+						<select name="user_role" class="block pt-2 pb-2 mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-white h-11 bg-slate-800 dark:hover:bg-indigo-600 focus:border-indigo-500 dark:focus:text-white dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
+								<option name="user_role" value="" selected disabled>
+									Select one
+								</option>
+								<option option="1" name="user_role" value="Educational Institute Admin" x-on:click="option_value = 'Educational Institute Administrator'" >
+									Educational Institute Administrator
+								</option>
+								<option option="2" name="user_role" value="Lecturer" x-on:click="option_value = 'Lecturer'">
+									Lecturer
+								</option>
+								<option option="3" name="user_role" value="Student" x-on:click="option_value = 'Student'">
+									Student
+								</option>
+								<option option="4" name="user_role" value="Guardian" x-on:click="option_value = 'Guardian'">
+									Guardian
+								</option>
+							{{-- </div>
+						</x-slot> --}}
+						</select>
+
+					</div>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
                         <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
+                            <x-checkbox name="terms" id="terms"  />
 
                             <div class="ms-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
                                 ]) !!}
                             </div>
                         </div>
@@ -47,7 +74,7 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+                <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

@@ -46,3 +46,21 @@ We also have to make sure that we register a route for the created component man
 
 > `php artisan make:livewire CreatePost --inline`
 This command creates an inline component within the class file.
+
+# Other Commands
+- Used to create the model, migration, factory, seeder, policy, controller, and form requests. 
+> php artisan make:model Student --all
+> php artisan make:model Guardian --all
+> php artisan make:model Lecturer --all
+> php artisan make:model EducationalInstituteAdmin --all
+> php artisan make:model DevAdmin --all
+
+- Used to inspect the models and its available attributes and relationships
+> php artisan model:show Student
+> php artisan model:show Guardian
+> php artisan model:show Lecturer
+> php artisan model:show EducationalInstituteAdmin
+> php artisan model:show DevAdmin
+
+# Other Tinker Commands
+- App\Models\DevAdmin::create(['name' => 'Admin', 'email' => 'Admin2@admin.com', 'password' => 'password',]);  

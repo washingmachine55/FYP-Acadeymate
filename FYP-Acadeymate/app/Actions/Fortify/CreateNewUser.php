@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -19,13 +22,19 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
+
+	public $roleToAssign;
+
     public function create(array $input): User
     {
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+			'user_role' => ['required', 'string', 'max:255'],
+			// $this->roleAssignment($input),
         ])->validate();
 
         return DB::transaction(function () use ($input) {
@@ -33,11 +42,48 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
-                $this->createTeam($user);
+				'user_role' => $input['user_role'],
+            ]), function ($input) {
+                $this->roleAssignment($input);
+				// $roleToAssign = $input['user_role'];
+				// dd($roleToAssign);
+				// $user = User::where('id', $input->id)->first();
+				// $user->assignRole('Student');
+				// return $this->roleAssignment($input, $user);
             });
         });
     }
+
+	public function roleAssignment($input): void
+	{
+		$roleToAssign = $input['user_role'];
+		// $user = User::where('id', $id);
+		// dd($roleToAssign);
+
+		if ($roleToAssign == 'Educational Institute Admin')
+		{
+			// $user = User::where('id', $input->id)->first();
+			$user = User::first();
+			$user->assignRole('Educational Institute Admin');
+}
+		else if ($roleToAssign == 'Lecturer')
+		{
+			$user = User::first();
+			$user->assignRole('Lecturer');
+		}
+		else if ($roleToAssign == 'Guardian')
+		{
+			$user = User::first();
+			$user->assignRole('Guardian');
+		}
+		else if ($roleToAssign == 'Student')
+		{
+			$user = User::first();
+			$user->assignRole('Student');
+		} else {
+			return;
+		}
+	}
 
     /**
      * Create a personal team for the user.

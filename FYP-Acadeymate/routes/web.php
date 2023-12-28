@@ -27,4 +27,25 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+// Provide routes to permissions
+Route::middleware('create-educational-institutes')->group(function () {
+    Route::get(
+        '/users/create',
+        [\App\Http\Controllers\UserController::class, 'create']
+    );
+
+    Route::post(
+        '/users',
+        [\App\Http\Controllers\UserController::class, 'store']
+    );
+});
+
+// Routes for new registeration
+Route::get('/register/new-educational-institute-admin', function () {
+    return view('auth/register/new-educational-institute-admin');
+})->name('register.new-educational-institute-admin');
+
+
+
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
