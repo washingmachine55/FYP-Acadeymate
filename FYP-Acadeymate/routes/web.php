@@ -41,11 +41,15 @@ Route::middleware('create-educational-institutes')->group(function () {
     );
 });
 
+// using middleware to check if user has admin role for accessing users route
+Route::middleware('role:admin')->get('/users', function () {
+    // ...
+});
+
 // Routes for new registeration
 Route::get('/register/new-educational-institute-admin', function () {
     return view('auth/register/new-educational-institute-admin');
 })->name('register.new-educational-institute-admin');
 
-
-
+//for tesing purposes, APIs specificallly
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
