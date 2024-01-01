@@ -1,7 +1,7 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+    <div class="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -14,6 +14,9 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+					<x-nav-link href="{{ route('component-test-dashboard') }}" :active="request()->routeIs('component-test-dashboard')">
+                        {{ __('Component Test Dashboard') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -71,14 +74,32 @@
                     </div>
                 @endif
 
+				<div class="relative pl-1 ml-3 text-sm font-medium leading-4 text-gray-900 transition duration-150 ease-in-out dark:text-gray-900 h-10 bg-orange-600"
+                    style="border-radius: 0.7625rem; border: 1px solid rgba(255, 255, 255, 0.30); padding-top: 0.6875rem;">
+						<div id="role" class="flex items-center justify-center px-3 m-auto">
+							{{ Auth::user()->user_role }}
+						</div>
+				</div>
+
                 <!-- Settings Dropdown -->
-                <div class="ms-3 relative">
-                    <x-dropdown align="right" width="48">
+                <div class="relative pl-1 ml-3 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:border-blue-600"
+                    style="border-radius: 1.5625rem 3.125rem 3.125rem 1.5625rem; border: 2px solid rgba(255, 255, 255, 0.30);">
+					<x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                {{-- <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                </button> --}}
+								<div class="flex">
+                                <span class="inline-flex items-center px-3 py-2 ">
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <button
+                                    class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                    <img class="object-cover w-8 h-8 rounded-full"
+                                        src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
+                            </div>
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
@@ -115,7 +136,7 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                        @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>

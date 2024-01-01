@@ -25,6 +25,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+	Route::get('/component-test-dashboard', function () {
+        return view('component-test-dashboard');
+    })->name('component-test-dashboard');
 });
 
 

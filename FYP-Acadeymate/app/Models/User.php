@@ -12,8 +12,6 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Contracts\Permission;
-use Spatie\Permission\Contracts\Role;
 
 
 class User extends Authenticatable
@@ -67,15 +65,5 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-
-	public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
-
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class);
-    }
 
 }
