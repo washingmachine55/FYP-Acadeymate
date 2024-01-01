@@ -28,11 +28,16 @@ Route::middleware([
 	Route::get('/component-test-dashboard', function () {
         return view('component-test-dashboard');
     })->name('component-test-dashboard');
+	Route::get('/user-actions',function () {
+	return view('user-actions');
+	})->name('user-actions');
 });
 
-
 // Provide routes to permissions
-Route::middleware('create-educational-institutes')->group(function () {
+Route::middleware('auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+	)->group(function () {
     Route::get(
         '/users/create',
         [\App\Http\Controllers\UserController::class, 'create']
@@ -48,11 +53,6 @@ Route::middleware('create-educational-institutes')->group(function () {
 Route::middleware('role:admin')->get('/users', function () {
     // ...
 });
-
-// Routes for new registeration
-Route::get('/register/new-educational-institute-admin', function () {
-    return view('auth/register/new-educational-institute-admin');
-})->name('register.new-educational-institute-admin');
 
 //for tesing purposes, APIs specificallly
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');

@@ -49,6 +49,9 @@
 								<option option="4" name="user_role" value="Guardian" x-on:click="option_value = 'Guardian'">
 									Guardian
 								</option>
+								<option option="5" name="user_role" value="Developer/Super Admin" x-on:click="option_value = 'Developer/Super Admin'" >
+									Developer/Super Admin
+								</option>
 							{{-- </div>
 						</x-slot> --}}
 						</select>

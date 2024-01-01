@@ -74,6 +74,10 @@
                     </div>
                 @endif
 
+				<div  x-data="window.themeSwitcher()" x-init="switchTheme()" @keydown.window.tab="switchOn = false" @click="switchOn = !switchOn; $dispatch('switch-toggled', switchOn)">
+						<x-theme-switch />
+				</div>
+
 				<div class="relative pl-1 ml-3 text-sm font-medium leading-4 text-gray-900 transition duration-150 ease-in-out dark:text-gray-900 h-10 bg-orange-600"
                     style="border-radius: 0.7625rem; border: 1px solid rgba(255, 255, 255, 0.30); padding-top: 0.6875rem;">
 						<div id="role" class="flex items-center justify-center px-3 m-auto">
