@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,8 @@ Route::middleware('auth:sanctum',
         '/users/create',
         [\App\Http\Controllers\UserController::class, 'create']
     );
+	// the code below wont work because it is a livewire component
+	Route::get('/user-actions/view-users',\App\Livewire\ViewUsers::class)->name('livewire.view-users');
 
     Route::post(
         '/users',

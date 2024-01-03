@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 
+
 class UserController extends Controller
 {
     // public function update(UpdateUserRequest $request, User $user): View
@@ -32,7 +33,8 @@ class UserController extends Controller
 
 	public function index()
 	{
-    	$users = \App\Models\User::all();
+    	// $users = \App\Models\User::all();
+    	$users = \App\Models\User::where('user_role', 'Student')->orderByDesc('user_role')->get();
     	return view('livewire.view-users', ['users' => $users]);
 	}
 

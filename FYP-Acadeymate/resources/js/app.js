@@ -1,8 +1,10 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs'
-window.Alpine = Alpine
-Alpine.start()
+// import Alpine from 'alpinejs'
+// import persist from '@alpinejs/persist'
+// window.Alpine = Alpine
+// Alpine.plugin(persist)
+// Alpine.start()
 
 window.themeSwitcher = function () {
 	var r = document.querySelector(':root');
