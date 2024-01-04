@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EducationalInstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire;
 
@@ -13,6 +14,10 @@ use App\Livewire;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::resource('EducationalInstitute', EducationalInstituteController::class);
+// Route::resource('EducationalInstitute', EducationalInstituteController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,10 +51,15 @@ Route::middleware('auth:sanctum',
 	// the code below wont work because it is a livewire component
 	Route::get('/user-actions/view-users',\App\Livewire\ViewUsers::class)->name('livewire.view-users');
 
+
     Route::post(
         '/users',
         [\App\Http\Controllers\UserController::class, 'store']
     );
+
+
+
+	// Route::post('/user-actions/create-educational-institute/store', [EducationalInstituteController::class, 'store'])->name('create-educational-institute/store');
 });
 
 // using middleware to check if user has admin role for accessing users route
@@ -59,3 +69,7 @@ Route::middleware('role:admin')->get('/users', function () {
 
 //for tesing purposes, APIs specificallly
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
+
+
+Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'render'])->name('create-educational-institute');
+Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');

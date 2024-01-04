@@ -1,12 +1,15 @@
-<div class="overflow-hidden hover:transition-transform transition-all duration-300 ease-in-out"
+{{-- <div class="overflow-hidden hover:transition-transform transition-all duration-300 ease-in-out" --}}
+<div class=""
+
 		x-data="{ hidden: true }"
-		x-init="hidden = true">
+		x-init="hidden = true"
+		id="sidenav">
 	<div
-		class="inline-flex flex-col justify-center pt-6 pl-6 pr-6 mt-6 ml-6 gap-y-56 align-items-start fixed bg-orange-100 dark:bg-gray-800 overflow-auto hover:transition-transform hover:w-72 transition-all duration-300 ease-in-out"
+		class="container-side-nav pt-6 pl-6 pr-6 inline-flex flex-col align-items-start fixed bg-orange-100 dark:bg-gray-800 overflow-auto hover:transition-transform hover:w-72 transition-all duration-300 ease-in-out"
 		style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);"
 		@mouseenter="hidden = false"
 		@mouseleave="hidden = true">
-		<div class="inline-flex flex-col gap-7">
+		<div class="inline-flex flex-col gap-7 mb-auto test-animation">
 			<x-nav-link class="flex-row svgIconsHover" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
 				<div class="flex justify-content-center align-items-center">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +52,7 @@
 			</x-nav-link>
 		</div>
 
-		<div class="inline-flex flex-col gap-7 pb-6 justify-bottom">
+		<div class="inline-flex flex-col gap-7 pb-6 justify-end">
 			<x-nav-link class="flex-row" href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
 				<div class="flex justify-content-center align-items-center">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

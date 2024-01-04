@@ -5,8 +5,6 @@
         </h2> --}}
     </x-slot>
 
-    <div class="flex">
-		<x-sidebar class="flex-col col-2"></x-sidebar>
 
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
@@ -43,5 +41,4 @@
                 </div>
             @endif
         </div>
-    </div>
 </x-app-layout>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none !important;
+	display: none !important;
 }
 
 :root {
@@ -30,26 +30,143 @@ path:hover {
 }
 
 .css-selector {
-    background: linear-gradient(208deg, #ff9000, #d7263d, #4a72ff);
-    background-size: 600% 600%;
+	background: linear-gradient(208deg, #ff9000, #d7263d, #4a72ff);
+	background-size: 600% 600%;
 
-    -webkit-animation: bgGradientAnimation 43s ease infinite;
-    -moz-animation: bgGradientAnimation 43s ease infinite;
-    animation: bgGradientAnimation 43s ease infinite;
+	-webkit-animation: bgGradientAnimation 43s ease infinite;
+	-moz-animation: bgGradientAnimation 43s ease infinite;
+	animation: bgGradientAnimation 43s ease infinite;
 }
 
 @-webkit-keyframes bgGradientAnimation {
-    0%{background-position:62% 0%}
-    50%{background-position:39% 100%}
-    100%{background-position:62% 0%}
+	0%{background-position:62% 0%}
+	50%{background-position:39% 100%}
+	100%{background-position:62% 0%}
 }
 @-moz-keyframes bgGradientAnimation {
-    0%{background-position:62% 0%}
-    50%{background-position:39% 100%}
-    100%{background-position:62% 0%}
+	0%{background-position:62% 0%}
+	50%{background-position:39% 100%}
+	100%{background-position:62% 0%}
 }
 @keyframes bgGradientAnimation {
-    0%{background-position:62% 0%}
-    50%{background-position:39% 100%}
-    100%{background-position:62% 0%}
+	0%{background-position:62% 0%}
+	50%{background-position:39% 100%}
+	100%{background-position:62% 0%}
+}
+
+#sidenav {
+	width: 110px !important;
+	transition: all 0.5s !important;
+}
+
+#sidenav:hover {
+	width: 22.7rem !important;
+}
+
+/* Side Nav CSS Starts */
+.container-side-nav {
+	height: 88vh;
+	background-size: cover;
+	background-position: center;
+	z-index: 50;
+	margin-top: 6rem;
+	margin-left: 1rem;
+}
+
+.side-nav-h4 {
+	color: #333;
+	font-size: large !important;
+	font-weight: 600;
+	display: none;
+	margin-bottom: 10px;
+}
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: fit-content !important;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	transition: all 0.3s ease !important;
+}
+
+.active {
+	background-color: #f8a789 !important;
+	color: white !important;
+	fill: #F5865D;
+}
+
+.active-text {
+	color: white !important;
+}
+
+.sidebar:hover {
+	width: fit-content !important;
+}
+
+.sidebar:hover .links li a {
+	display: block;
+	justify-content: flex-start;
+}
+
+.sidebar:hover h4 {
+	display: block;
+}
+
+.sidebar:hover hr {
+	border-color: transparent;
+}
+
+/* Side Nav CSS Ends */
+
+/* Container in which we will be inserting the slots */
+.main-container {
+	height: 88vh;
+	margin-left: 0.4rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+
+.example::-webkit-scrollbar
+{
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.example
+{
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+table {
+	width: 100%;
+}
+
+table tbody tr td:last-child {
+	text-align: center !important;
+}
+
+table tbody tr td:first-child {
+	padding-left: 2rem !important;
+}
+table thead tr th:first-child {
+	padding-left: 2rem !important;
+}
+
+.table-row-hover {
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+}
+
+.table-row-hover:hover {
+	transform: translateY(-5px);
+}
+
+.test-animation {
+	transition: all 0.5s !important;
 }

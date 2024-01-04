@@ -72,5 +72,7 @@ class DatabaseSeeder extends Seeder
         //     ['user_role' => 'Student'],
         // ]);
 
+		\App\Models\EducationalInstitute::factory(5)->create();
+
     }
 }
