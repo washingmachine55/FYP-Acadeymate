@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire;
+use App\Livewire\CreateCourse;
+use App\Livewire\CreateEducationalInstitute;
+use App\Models\EducationalInstitute;
+use GuzzleHttp\Promise\Create;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +58,32 @@ Route::get('/register/new-educational-institute-admin', function () {
 
 //for tesing purposes, APIs specificallly
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
+
+// Assigning Resource
+Route::resource('EducationalInstitute', App\Http\Controllers\EducationalInstituteController::class);
+
+// Mass Routes assignment
+Route::get('user-actions/create-course', CreateCourse::class)->name('create-course');
+Route::get('user-actions/create-educational-institute', App\Http\Controllers\EducationalInstituteController::class, 'index')->name('create-educational-institute');
+Route::get('user-actions/create-intake',)->name('create-intake');
+
+
+Route::middleware('auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+	)->group(function () {
+		// Route::post(
+		// 	'user-actions/create-educational-institute/{id}', [App\Http\Controllers\EducationalInstituteController::class] ($id) {
+		// 		return dd('Educational Institute Created Successfully')
+		// 	})->name(create-educational-institute/create);
+
+		// Route::post(
+		// 	'user-actions/create-educational-institute/{id}',
+		// 	[\App\Http\Controllers\EducationalInstituteController::class, 'store($request)']
+		// )->name('create-educational-institute/create/');
+		// Route::put('user-actions/create-educational-institute/{id}', function ($id) {
+
+		// });
+
+		// Route::post('user-actions/create-educational-institute/{id}', 'EducationalInstituteController@store');
+});
