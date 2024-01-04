@@ -30,6 +30,40 @@ class DeleteUser implements DeletesUsers
      */
     public function delete(User $user): void
     {
+		$assignedRole = $user['user_role'];
+
+		if ($assignedRole == 'Developer/Super Admin')
+		{
+			// $user = User::where('id', $input->id)->first();
+			$user = User::where('id', $user->id)->first();;
+			$user->removeRole('Developer/Super Admin');
+		}
+		else if ($assignedRole == 'Educational Institute Admin')
+		{
+			// $user = User::find(1);
+			$user = User::where('id', $user->id)->first();;
+			$user->removeRole('Educational Institute Admin');
+		}
+		else if ($assignedRole == 'Lecturer')
+		{
+			// $user = User::find(1);
+			$user = User::where('id', $user->id)->first();;
+			$user->removeRole('Lecturer');
+		}
+		else if ($assignedRole == 'Guardian')
+		{
+			// $user = User::find(1);
+			$user = User::where('id', $user->id)->first();;
+			$user->removeRole('Guardian');
+		}
+		else if ($assignedRole == 'Student')
+		{
+			// $user = User::find(1);
+			$user = User::where('id', $user->id)->first();;
+			$user->removeRole('Student');
+		} else {
+			return;
+		}
         DB::transaction(function () use ($user) {
             $this->deleteTeams($user);
             $user->deleteProfilePhoto();

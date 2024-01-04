@@ -3,5 +3,53 @@
 @tailwind utilities;
 
 [x-cloak] {
-    display: none;
+    display: none !important;
+}
+
+:root {
+	--svgcolor: white;
+	--svgColorHover: #d7263d;
+	/* transition: fill 0.2s ease-in-out; */
+}
+:root:hover {
+	--svgColorHover: #d7263d;
+}
+path {
+	transition: fill 0.2s ease-in-out;
+}
+path:hover {
+	fill: var(--svgColorHover);
+	transition: fill 0.2s ease-in-out;
+}
+.svgIconsHover {
+	transition: fill 0.2s ease-in-out;
+}
+.svgIconsHover:hover {
+	fill: var(--svgColorHover);
+	transition: fill 0.2s ease-in-out;
+}
+
+.css-selector {
+    background: linear-gradient(208deg, #ff9000, #d7263d, #4a72ff);
+    background-size: 600% 600%;
+
+    -webkit-animation: bgGradientAnimation 43s ease infinite;
+    -moz-animation: bgGradientAnimation 43s ease infinite;
+    animation: bgGradientAnimation 43s ease infinite;
+}
+
+@-webkit-keyframes bgGradientAnimation {
+    0%{background-position:62% 0%}
+    50%{background-position:39% 100%}
+    100%{background-position:62% 0%}
+}
+@-moz-keyframes bgGradientAnimation {
+    0%{background-position:62% 0%}
+    50%{background-position:39% 100%}
+    100%{background-position:62% 0%}
+}
+@keyframes bgGradientAnimation {
+    0%{background-position:62% 0%}
+    50%{background-position:39% 100%}
+    100%{background-position:62% 0%}
 }

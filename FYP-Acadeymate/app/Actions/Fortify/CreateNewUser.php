@@ -60,25 +60,34 @@ class CreateNewUser implements CreatesNewUsers
 		// $user = User::where('id', $id);
 		// dd($roleToAssign);
 
-		if ($roleToAssign == 'Educational Institute Admin')
+		if ($roleToAssign == 'Developer/Super Admin')
 		{
 			// $user = User::where('id', $input->id)->first();
-			$user = User::first();
+			$user = User::where('id', $input->id)->first();;
+			$user->assignRole('Developer/Super Admin');
+		}
+		else if ($roleToAssign == 'Educational Institute Admin')
+		{
+			// $user = User::find(1);
+			$user = User::where('id', $input->id)->first();;
 			$user->assignRole('Educational Institute Admin');
-}
+		}
 		else if ($roleToAssign == 'Lecturer')
 		{
-			$user = User::first();
+			// $user = User::find(1);
+			$user = User::where('id', $input->id)->first();;
 			$user->assignRole('Lecturer');
 		}
 		else if ($roleToAssign == 'Guardian')
 		{
-			$user = User::first();
+			// $user = User::find(1);
+			$user = User::where('id', $input->id)->first();;
 			$user->assignRole('Guardian');
 		}
 		else if ($roleToAssign == 'Student')
 		{
-			$user = User::first();
+			// $user = User::find(1);
+			$user = User::where('id', $input->id)->first();;
 			$user->assignRole('Student');
 		} else {
 			return;

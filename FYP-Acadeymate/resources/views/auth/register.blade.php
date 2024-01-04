@@ -31,9 +31,9 @@
 
             <div class="mt-4" >
                 <x-label for="user_role" value="{{ __('Register As') }}" />
-					<div align="left" class="block mt-1 w-52">
+					<div align="left" class="block mt-1 w-full">
 
-						<select name="user_role" class="block pt-2 pb-2 mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-white h-11 bg-slate-800 dark:hover:bg-indigo-600 focus:border-indigo-500 dark:focus:text-white dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
+						<select name="user_role" class="block pt-2 pb-2 mt-1 w-full bg-white text-black border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-white h-11 dark:hover:bg-indigo-600 focus:border-indigo-500 dark:focus:text-white dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 transition-all duration-500 hover:border-indigo-500'">
 								<option name="user_role" value="" selected disabled>
 									Select one
 								</option>
@@ -48,6 +48,9 @@
 								</option>
 								<option option="4" name="user_role" value="Guardian" x-on:click="option_value = 'Guardian'">
 									Guardian
+								</option>
+								<option option="5" name="user_role" value="Developer/Super Admin" x-on:click="option_value = 'Developer/Super Admin'" >
+									Developer/Super Admin
 								</option>
 							{{-- </div>
 						</x-slot> --}}

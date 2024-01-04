@@ -2,7 +2,14 @@
 
 namespace Database\Seeders;
 
+use Doctrine\DBAL\Schema\ForeignKeyConstraint;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,13 +64,19 @@ class DatabaseSeeder extends Seeder
 			}
     	});
 
+<<<<<<< HEAD
 		// $this->call([
         //     EducationalInstituteSeeder::class,
+=======
+        // \App\Models\UserRole::factory()->createMany([
+        //     ['user_role' => 'DevAdmin'],
+        //     ['user_role' => 'EducationalInstitutionAdmin'],
+        //     ['user_role' => 'Lecturer'],
+        //     ['user_role' => 'Guardian'],
+        //     ['user_role' => 'Student'],
+>>>>>>> ab0c5c921456aa99de11a07e5c03cc6044858f2b
         // ]);
 		\App\Models\EducationalInstitute::factory(5)->create();
 
-        $this->call([
-            RoleAndPermissionSeeder::class,
-        ]);
     }
 }

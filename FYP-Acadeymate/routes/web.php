@@ -2,10 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire;
+<<<<<<< HEAD
 use App\Livewire\CreateCourse;
 use App\Livewire\CreateEducationalInstitute;
 use App\Models\EducationalInstitute;
 use GuzzleHttp\Promise\Create;
+=======
+>>>>>>> ab0c5c921456aa99de11a07e5c03cc6044858f2b
 
 /*
 |--------------------------------------------------------------------------
@@ -30,15 +33,25 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+	Route::get('/component-test-dashboard', function () {
+        return view('component-test-dashboard');
+    })->name('component-test-dashboard');
+	Route::get('/user-actions',function () {
+	return view('user-actions');
+	})->name('user-actions');
 });
 
-
 // Provide routes to permissions
-Route::middleware('create-educational-institutes')->group(function () {
+Route::middleware('auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+	)->group(function () {
     Route::get(
         '/users/create',
         [\App\Http\Controllers\UserController::class, 'create']
     );
+	// the code below wont work because it is a livewire component
+	Route::get('/user-actions/view-users',\App\Livewire\ViewUsers::class)->name('livewire.view-users');
 
     Route::post(
         '/users',
@@ -50,11 +63,6 @@ Route::middleware('create-educational-institutes')->group(function () {
 Route::middleware('role:admin')->get('/users', function () {
     // ...
 });
-
-// Routes for new registeration
-Route::get('/register/new-educational-institute-admin', function () {
-    return view('auth/register/new-educational-institute-admin');
-})->name('register.new-educational-institute-admin');
 
 //for tesing purposes, APIs specificallly
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
