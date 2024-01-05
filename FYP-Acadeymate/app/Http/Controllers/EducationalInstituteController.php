@@ -82,10 +82,6 @@ class EducationalInstituteController extends Controller
             $userToDelete->delete();
         });
 
-        return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute deleted successfully.') <<< 'HTML'
-		<div class="alert alert-success">
-			<strong>Success!</strong> Educational Institute deleted successfully.
-		</div>
-		HTML;
+        return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute deleted successfully.');
     }
 }
