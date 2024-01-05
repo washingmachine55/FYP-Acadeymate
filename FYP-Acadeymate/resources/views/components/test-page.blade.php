@@ -30,16 +30,10 @@
 	<div class="flex mt-10">
 		<div class="flex-row">
 			<h2 class="text-3xl dark:text-white mb-3">Create LMS actions</h2>
-<<<<<<< HEAD
-			<x-secondary-button wire:navigate href="{{ route('create-educational-institute') }}" >Create an Educational Institute Admins</x-secondary-button>
-			<x-secondary-button wire:navigate href="{{ route('create-course') }}" >Create Courses</x-secondary-button>
-			<x-danger-button >Create Subjects</x-danger-button>
-			<x-danger-button >Create Batches</x-danger-button>
-=======
+			<x-secondary-button wire:navigate href="{{ route('create-educational-institute') }}" >Create an Educational Institute</x-secondary-button>
 			<x-danger-button >Create Subjects</x-danger-button>
 			<x-danger-button >Create Batches</x-danger-button>
 			<x-danger-button >Create Courses</x-danger-button>
->>>>>>> ab0c5c921456aa99de11a07e5c03cc6044858f2b
 			<x-danger-button >Create Modules</x-danger-button>
 			<x-danger-button >Create Classes</x-danger-button>
 			<x-danger-button >Create Class Sections</x-danger-button>

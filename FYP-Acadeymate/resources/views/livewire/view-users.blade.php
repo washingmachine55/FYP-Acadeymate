@@ -1,5 +1,5 @@
 <div class="p-7">
-	<table class=" dark:text-gray-200 text-gray-800  text-xl ">
+	<table class="dark:text-gray-200 text-gray-800 text-xl">
 
 			<thead class="dark:bg-orange-900 bg-orange-100 h-14 text-left">
 				<tr>
@@ -10,8 +10,7 @@
 					<th class="text-center">Actions</th>
 				</tr>
 			</thead>
-
-			<tbody  >
+			<tbody>
 				@foreach ($users as $user)
 				<tr class="flex-row even:dark:bg-slate-700 table-row-hover even:bg-gray-50 border-b-2 text-lg h-16">
 					<td class="">{{ $user->name }}</td>

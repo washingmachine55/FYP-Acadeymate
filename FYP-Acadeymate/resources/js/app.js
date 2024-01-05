@@ -32,3 +32,19 @@ window.themeSwitcher = function () {
 		}
 	}
 }
+
+window.Alpine.store('table', {
+    editing: false,
+    toggleEditing() {
+        this.editing = !this.editing;
+    },
+    disableEditing() {
+        this.editing = false;
+    }
+});
+
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        Alpine.store('table').disableEditing();
+    }
+});

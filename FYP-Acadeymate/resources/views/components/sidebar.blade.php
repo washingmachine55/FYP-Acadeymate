@@ -10,7 +10,7 @@
 		@mouseenter="hidden = false"
 		@mouseleave="hidden = true">
 		<div class="inline-flex flex-col gap-7 mb-auto test-animation">
-			<x-nav-link class="flex-row svgIconsHover" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+			<x-nav-link class="flex-row svgIconsHover" wire:navigate href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
 				<div class="flex justify-content-center align-items-center">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
@@ -20,7 +20,7 @@
 					<span x-show="!hidden" class="flex text-xl pl-10">Dashboard</span>
 				</div>
 			</x-nav-link>
-			<x-nav-link class="flex-row" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+			<x-nav-link class="flex-row svgIconsHover" wire:navigate href="{{ route('component-test-dashboard') }}" :active="request()->routeIs('component-test-dashboard')">
 				<div class="flex justify-content-center align-items-center">
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path

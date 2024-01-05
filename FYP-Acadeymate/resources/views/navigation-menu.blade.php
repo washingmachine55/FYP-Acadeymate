@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 w-full bg-orange-200 border-b-2 border-orange-400 dark:bg-gray-800 dark:border-gray-700">
+<nav x-data="{ open: false }" class="fixed top-0 left-0 z-9999 bg-orange-200 border-b-2 border-orange-400 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-9xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -31,7 +31,7 @@
 				<!-- Current URL -->
 				<div>
 					@if (isset($header))
-					<x-slot name="header">
+					<x-slot name="header" :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden sm:block">
 						<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
 							<x-input class="text-center rounded-xl w-96" disabled placeholder="> > {{ __('url()->current()') }}"/>
 							{{-- Ooga booga --}}
@@ -39,7 +39,7 @@
 						</div>
 					</x-slot>
 					@else
-					<div name="header">
+					<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
 						<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
 							<x-input class="text-left rounded-xl w-96" disabled
 							placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/>
