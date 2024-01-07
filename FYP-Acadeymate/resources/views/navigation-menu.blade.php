@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 z-9999 bg-orange-200 border-b-2 border-orange-400 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
+<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-9xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -10,15 +10,17 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link class="text-base text-black active:font-extrabold" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-					<x-nav-link class="text-base text-black active:font-extrabold" href="{{ route('component-test-dashboard') }}" :active="request()->routeIs('component-test-dashboard')">
-                        {{ __('Component Test Dashboard') }}
-                    </x-nav-link>
-                </div>
+				{{-- Search bar looky thingy --}}
+				<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
+					<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
+						<x-input class="text-left w-96" disabled style="border-radius: 1rem !important;"
+						placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/>
+						{{-- <x-input class="text-center rounded-xl w-96" disabled placeholder="> {{ $search }}"/> --}}
+						{{-- Ooga booga --}}
+						{{-- {{ $header }} --}}
+					</div>
+				</div>
+
             </div>
 
 			<div class="flex">
@@ -39,15 +41,7 @@
 						</div>
 					</x-slot>
 					@else
-					<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
-						<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
-							<x-input class="text-left rounded-xl w-96" disabled
-							placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/>
-							{{-- <x-input class="text-center rounded-xl w-96" disabled placeholder="> {{ $search }}"/> --}}
-							{{-- Ooga booga --}}
-							{{-- {{ $header }} --}}
-						</div>
-					</div>
+
 					@endif
 				</div>
 			</div>
@@ -105,7 +99,8 @@
                     </div>
                 @endif
 
-				<div x-data="{window.themeSwitcher(): $persist(false)}" x-init="switchTheme()" @keydown.window.tab="switchOn = false" @click="switchOn = !switchOn; $dispatch('switch-toggled', switchOn)">
+				<div x-data="{ window.themeSwitcher(): $persist(false) }" x-init="switchTheme()" x-on:keydown.window.tab="switchOn = false" x-on:click="switchOn = !switchOn; $dispatch('switch-toggled', switchOn)">
+				{{-- <div x-data="{window.themeSwitcher(): $persist(false)}" x-init="switchTheme()" @keydown.window.tab="switchOn = false" @click="switchOn = !switchOn; $dispatch('switch-toggled', switchOn)"> --}}
 						<x-theme-switch />
 				</div>
 
@@ -148,7 +143,7 @@
                             @endif
                         </x-slot>
 
-                        <x-slot name="content">
+                        <x-slot name="content" style="z-index: 9999;">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}

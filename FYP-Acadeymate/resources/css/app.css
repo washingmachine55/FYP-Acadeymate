@@ -14,10 +14,10 @@
 :root:hover {
 	--svgColorHover: #d7263d;
 }
-path {
+svg path {
 	transition: fill 0.2s ease-in-out;
 }
-path:hover {
+svg path:hover {
 	fill: var(--svgColorHover);
 	transition: fill 0.2s ease-in-out;
 }
@@ -63,13 +63,25 @@ path:hover {
 	width: 22.7rem !important;
 }
 
+#sidenav-child {
+	width: 90px !important;
+	transition: all 0.6s !important;
+}
+
+#sidenav-child:hover {
+	width: 18rem !important;
+}
+
+#sidenav-child:child {
+	transition: all 0.6s !important;
+}
+
 /* Side Nav CSS Starts */
 .container-side-nav {
 	height: 87vh;
 	background-size: cover;
 	background-position: center;
-	z-index: 50;
-	margin-top: 6.7rem;
+	margin-top: 7.25rem;
 	margin-left: 1rem;
 }
 
@@ -158,6 +170,19 @@ table thead tr th:first-child {
 	padding-left: 2rem !important;
 }
 
+th:first-of-type {
+	border-top-left-radius: 1rem;
+}
+th:last-of-type {
+	border-top-right-radius: 1rem;
+}
+tr:last-of-type td:first-of-type {
+	border-bottom-left-radius: 1rem;
+}
+tr:last-of-type td:last-of-type {
+	border-bottom-right-radius: 1rem;
+}
+
 .table-row-hover {
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
@@ -167,11 +192,25 @@ table thead tr th:first-child {
 	transform: translateY(-5px);
 }
 
-.test-animation {
+/* .test-animation {
 	transition: all 0.5s !important;
+} */
+
+.test-animation {
+	transition: height 0.5s;
+	-webkit-transition: height 0.5s;
+	transition: 1.5s;
+}
+.test-animation:hover {
+	height: 145px;
 }
 
 .navbar-width {
-	width: 98lvw;
+	margin-top: 1.1rem;
+	width: 98.5lvw;
 	border-radius: 1.25rem;
+}
+
+.main-background {
+	background-color: salmon;
 }

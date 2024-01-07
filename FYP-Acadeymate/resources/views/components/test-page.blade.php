@@ -5,7 +5,7 @@
         A temporary test page for components and other user actions
     </h1>
 
-	<div x-init="{ search : '' )"></div>
+	{{-- <div x-init="{ search : '' )"></div> --}}
 
 	<div class="flex mt-10">
 		<div class="flex-row">

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EducationalInstituteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\SortEducationalInstitutes;
+
 use App\Livewire;
 
 /*
@@ -16,7 +18,6 @@ use App\Livewire;
 */
 
 Route::resource('EducationalInstitute', EducationalInstituteController::class);
-// Route::resource('EducationalInstitute', EducationalInstituteController::class);
 
 
 Route::get('/', function () {
@@ -71,5 +72,7 @@ Route::middleware('role:admin')->get('/users', function () {
 Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
 
 
-Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'render'])->name('create-educational-institute');
+Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'create'])->name('create-educational-institute');
 Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');
+Route::get('/institutes/id={id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
+
