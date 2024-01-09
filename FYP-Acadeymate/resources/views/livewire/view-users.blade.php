@@ -16,14 +16,13 @@
 				<tr class="flex-row even:dark:bg-slate-700 table-row-hover even:bg-gray-50 border-b-2 text-lg h-16">
 					<td class=""><a href="{{ route('user-profile.show', $user->id) }}">{{ $user->name }}</a></td>
 					<td class="">{{ $user->email }}</td>
-					// nned to fix this forEach statement
+					<td class="">{{ $user->user_role }}</td>
 					@foreach ($user->educationalInstitutes as $institute)
-						@if ($user->educationalInstitutes)
-							<td class="">{{ $institute->name }}</td>
-						@elseif ($institute->null)
-							<td class="">N/A</td>
-						@endif
+						<td class=""><a href="{{ route('institutes.show', $institute->id) }}">{{ $institute->name }}</a></td>
 					@endforeach
+					@if ($user->educationalInstitutes->isEmpty())
+						<td class="">N/A</td>
+					@endif
 					<td class="">{{ $user->created_at }}</td>
 					<td class="justify-content-center align-items-center">
 						<div class="space-x-4">

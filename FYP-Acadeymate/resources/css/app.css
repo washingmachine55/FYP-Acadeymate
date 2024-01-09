@@ -6,6 +6,10 @@
 	display: none !important;
 }
 
+body {
+	background-color: salmon;
+}
+
 :root {
 	--svgcolor: white;
 	--svgColorHover: #d7263d;
@@ -78,7 +82,7 @@ svg path:hover {
 
 /* Side Nav CSS Starts */
 .container-side-nav {
-	height: 87vh;
+	height: 86vh;
 	background-size: cover;
 	background-position: center;
 	margin-top: 7.25rem;
@@ -136,7 +140,7 @@ svg path:hover {
 
 /* Container in which we will be inserting the slots */
 .main-container {
-	height: 87vh;
+	height: 86vh;
 	margin-left: 0.4rem;
 }
 

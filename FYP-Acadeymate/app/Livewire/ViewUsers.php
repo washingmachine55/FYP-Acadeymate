@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class ViewUsers extends Component
@@ -15,6 +16,7 @@ class ViewUsers extends Component
 
 		// $this->users = \App\Models\User::all();
 		// create a query to get all users as well as the institutes they are enrolled under
+		// $this->users = \App\Models\User::with('educationalInstitutes')->get();
 		$this->users = \App\Models\User::with('educationalInstitutes')->get();
 
 		return view('livewire.view-users', ['users' => 'users']);
