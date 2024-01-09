@@ -22,7 +22,7 @@ Route::resource('EducationalInstitute', EducationalInstituteController::class);
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::middleware([
     'auth:sanctum',
@@ -75,4 +75,5 @@ Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
 Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'create'])->name('create-educational-institute');
 Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');
 Route::get('/institutes/id={id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
+Route::get('/users/id={id}', 'App\Http\Controllers\UserController@show')->name('user-profile.show');
 

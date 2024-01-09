@@ -14,7 +14,10 @@
 				<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
 					<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
 						<x-input class="text-left w-96" disabled style="border-radius: 1rem !important;"
-						placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/>
+						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/> --}}
+						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->afterLast('/', '/') }}"/> --}}
+						placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080')->headline() }}"/>
+						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->headline() }}"/> --}}
 						{{-- <x-input class="text-center rounded-xl w-96" disabled placeholder="> {{ $search }}"/> --}}
 						{{-- Ooga booga --}}
 						{{-- {{ $header }} --}}
@@ -104,19 +107,23 @@
 						<x-theme-switch />
 				</div>
 
+				@if ( Auth::check() )
 				<div class="relative h-10 pl-1 ml-3 text-sm leading-4 text-gray-900 transition duration-150 ease-in-out bg-orange-400 dark:text-gray-900 hover:bg-orange-300 hover:text-black font-semibold"
                     style="border-radius: 0.7625rem; border: 1px solid rgba(255, 255, 255, 0.30); padding-top: 0.6875rem;">
 						<div id="role" class="flex items-center justify-center px-3 m-auto">
 							{{ Auth::user()->user_role }}
 						</div>
 				</div>
+				@else
+					{{ route('welcome') }}
+				@endif
 
                 <!-- Settings Dropdown -->
                 <div class="relative pl-1 ml-3 text-sm font-normal leading-4 text-black transition duration-150 ease-in-out border-2 border-gray-500 dark:border-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:border-blue-600 border-opacity-30"
                     style="border-radius: 1.5625rem 3.125rem 3.125rem 1.5625rem;">
 					<x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos() && Auth::check())
                                 {{-- <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                                     <img class="object-cover w-8 h-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button> --}}
@@ -133,7 +140,7 @@
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700">
-                                        {{ Auth::user()->name }}
+                                        {{-- {{ Auth::user()->name }} --}}
 
                                         <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
@@ -149,8 +156,12 @@
                                 {{ __('Manage Account') }}
                             </div>
 
+							<x-dropdown-link href="{{ route('user-profile.show', Auth::user()->id) }}" :active="request()->routeIs('user-profile.show')">
+								{{ __('View/Edit Profile') }}
+							</x-dropdown-link>
+
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Edit Account Settings') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -211,9 +222,14 @@
             </div>
 
             <div class="mt-3 space-y-1">
+				 <!-- Public Profile View -->
+                <x-responsive-nav-link href="{{ route('user-profile.show', Auth::user()->id) }}" :active="request()->routeIs('user-profile.show')">
+                    {{ __('View/Edit Profile') }}
+                </x-responsive-nav-link>
+
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Edit Account Settings ') }}
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

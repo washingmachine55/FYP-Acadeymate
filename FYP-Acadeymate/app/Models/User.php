@@ -66,4 +66,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+	public function educationalInstitutes()
+	{
+		return $this->belongsToMany(EducationalInstitute::class, 'enrolled_under');
+	}
+
 }

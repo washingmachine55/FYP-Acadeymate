@@ -6,6 +6,7 @@
 					<th>Name</th>
 					<th>Email</th>
 					<th>User Role</th>
+					<th>Enrolled Under</th>
 					<th>Joined At</th>
 					<th class="text-center">Actions</th>
 				</tr>
@@ -13,9 +14,16 @@
 			<tbody>
 				@foreach ($users as $user)
 				<tr class="flex-row even:dark:bg-slate-700 table-row-hover even:bg-gray-50 border-b-2 text-lg h-16">
-					<td class="">{{ $user->name }}</td>
+					<td class=""><a href="{{ route('user-profile.show', $user->id) }}">{{ $user->name }}</a></td>
 					<td class="">{{ $user->email }}</td>
-					<td class="">{{ $user->user_role }}</td>
+					// nned to fix this forEach statement
+					@foreach ($user->educationalInstitutes as $institute)
+						@if ($user->educationalInstitutes)
+							<td class="">{{ $institute->name }}</td>
+						@elseif ($institute->null)
+							<td class="">N/A</td>
+						@endif
+					@endforeach
 					<td class="">{{ $user->created_at }}</td>
 					<td class="justify-content-center align-items-center">
 						<div class="space-x-4">

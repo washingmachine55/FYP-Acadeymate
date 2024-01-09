@@ -14,4 +14,9 @@ class EducationalInstitute extends Model
 	protected $fillable = [
 		'name', 'email',
 	];
+
+	public function users()
+	{
+		return $this->belongsToMany(User::class, 'enrolled_under');
+	}
 }

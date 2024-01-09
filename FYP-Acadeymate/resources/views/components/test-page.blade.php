@@ -11,7 +11,8 @@
 		<div class="flex-row">
 			<h2 class="text-3xl dark:text-white mb-3">Other actions</h2>
 			<x-button wire:navigate href="{{ route('create-educational-institute') }}" >Create Educational Institutes</x-button>
-			<x-secondary-button wire:navigate href="{{ route('livewire.view-educational-institutes') }}" >View Educational Institutes</x-secondary-button>
+			<x-button wire:navigate href="{{ route('livewire.view-educational-institutes') }}" >View Educational Institutes</x-button>
+			<x-button wire:navigate href="{{ route('livewire.view-educational-institutes') }}" >View Single Educational Institute</x-button>
 			<x-danger-button >View Profiles</x-danger-button>
 			<x-danger-button >Edit Profile Details</x-danger-button>
 		</div>

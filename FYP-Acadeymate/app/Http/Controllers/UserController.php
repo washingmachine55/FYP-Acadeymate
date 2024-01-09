@@ -9,8 +9,6 @@ use Illuminate\View\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-
-
 class UserController extends Controller
 {
     // public function update(UpdateUserRequest $request, User $user): View
@@ -38,4 +36,9 @@ class UserController extends Controller
     	return view('livewire.view-users', ['users' => $users]);
 	}
 
+	public function show($id)
+	{
+    	$userProfile = User::findOrFail($id);
+		return view('livewire.user-profile', ['user' => $userProfile]);
+	}
 }
