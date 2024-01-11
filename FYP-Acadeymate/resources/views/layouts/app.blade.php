@@ -46,7 +46,6 @@
 		<!-- Page Content -->
 
 		@stack('modals')
-
 		@livewireScripts
 	</body>
 	</html>

@@ -2,29 +2,32 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Laravel\Jetstream\Jetstream;
 use Livewire\Component;
 
 class EnrollUserModal extends Component
 {
-	public $showingModal = false;
-
-    public $listeners = [
-        'hideMe' => 'hideModal'
-    ];
-
-    public function showModal(){
-        $this->showingModal = true;
-    }
-
-    public function hideModal(){
-        $this->showingModal = false;
-    }
+	public $showModal = false;
 
     public function render()
     {
         return view('livewire.enroll-user-modal');
+		// return 'hello world';
     }
+
+    public function openTestModal()
+    {
+        $this->resetErrorBag();
+        $this->showModal = true;
+		$this->dispatch('enrolling-users-to-institutes');
+    }
+
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
+
+	public function enrollSelectedUsers()
+	{
+		$this->showModal = false;
+	}
 }

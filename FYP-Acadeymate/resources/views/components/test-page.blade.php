@@ -59,7 +59,7 @@
 			<x-danger-button >Edit Class Sections</x-danger-button>
 		</div>
 		<div class="flex-row">
-			<h2 class="text-3xl dark:text-white mb-3">Delect LMS actions</h2>
+			<h2 class="text-3xl dark:text-white mb-3">Delete LMS actions</h2>
 			<x-danger-button >Delete Subjects</x-danger-button>
 			<x-danger-button >Delete Batches</x-danger-button>
 			<x-danger-button >Delete Courses</x-danger-button>
@@ -68,6 +68,13 @@
 			<x-danger-button >Delete Class Sections</x-danger-button>
 		</div>
 	</div>
+	<div class="flex mt-10">
+		<div class="flex-row">
+			<h2 class="text-3xl dark:text-white mb-3">Modal Test</h2>
+				@livewire('enroll-user-modal')
+		</div>
+	</div>
+
 
 </div>
 

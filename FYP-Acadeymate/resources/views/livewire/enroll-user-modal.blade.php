@@ -1,20 +1,37 @@
-<x-confirmation-modal wire:model="showingModal">
-	<x-slot name="title">
-		{{ __('Delete API Token') }}
-	</x-slot>
+<div>
+        <div class="">
+            <x-button wire:click="openTestModal" wire:loading.attr="disabled">
+                {{ __('Enroll users') }}
+            </x-button>
+        </div>
 
-	<x-slot name="content">
-		{{ __('Are you sure you would like to delete this API token?') }}
-	</x-slot>
+        <!-- Delete User Confirmation Modal -->
+        <x-dialog-modal wire:model.live="showModal">
+            <x-slot name="title">
+                {{ __('Enroll users to selected institute') }}
+            </x-slot>
 
-	<x-slot name="footer">
-		{{-- <x-secondary-button wire:click="$toggle('confirmingEnrollingUser')" wire:loading.attr="disabled"> --}}
-		<x-secondary-button wire:click="$set('showingModal', false)" wire:loading.attr="disabled">
-			{{ __('Cancel') }}
-		</x-secondary-button>
+            <x-slot name="content">
+                {{ __('Please search and add users that you would like to add to this institute') }}
 
-		{{-- <x-danger-button class="ms-3" wire:click="deleteApiToken" wire:loading.attr="disabled">
-			{{ __('Delete') }}
-		</x-danger-button> --}}
-	</x-slot>
-</x-confirmation-modal>
+                <div class="mt-4" x-data="{}" x-on:enrolling-users-to-institutes.window="setTimeout(() => $refs.enrollingUsers.focus(), 250)">
+                    <x-input type="text" class="mt-1 block w-3/4"
+								x-ref="enrollingUsers"
+                                placeholder="{{ __('Enter users here') }}"
+								wire:keydown.enter="enrollSelectedUsers"
+                                />
+
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-secondary-button wire:click="$toggle('showModal')" wire:loading.attr="disabled">
+                    {{ __('Cancel') }}
+                </x-secondary-button>
+
+                <x-button class="ms-3" wire:click="enrollSelectedUsers" wire:loading.attr="disabled">
+                    {{ __('Enroll Selected Users') }}
+                </x-button>
+            </x-slot>
+        </x-dialog-modal>
+</div>
