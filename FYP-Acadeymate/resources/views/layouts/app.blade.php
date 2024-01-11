@@ -5,7 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>{{ $title ?? 'Page Title' }}</title>
+	{{-- <title>{{ $title ?? 'Page Title' }}</title> --}}
+	<title>@yield( 'title', 'Acadeymate' )</title>
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,7 +30,7 @@
 			@livewire('navigation-menu')
 		</div>
 		<div class="container-side-nav w-full mr-4 mb-4">
-			<div class="overflow-auto main-container example bg-orange-50 shadow-xl dark:bg-gray-800 sm:rounded-lg" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);"> {{ $slot }} </div>
+			<div class="overflow-auto main-container example bg-orange-50 shadow-xl dark:bg-gray-800 sm:rounded-lg transition-all duration-500" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);"> {{ $slot }} </div>
 		</div>
 	</div>
 

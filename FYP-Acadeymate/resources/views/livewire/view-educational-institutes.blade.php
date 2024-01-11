@@ -3,9 +3,12 @@
     $sortDirection = in_array($sortDirection, ['asc', 'desc']) ? $sortDirection : 'asc';
 @endphp
 <x-app-layout >
+
 	<div class="p-7" @keyup.escape.window="editing = false" >
-		<table class="dark:text-gray-200 text-gray-800 text-xl">
-			<thead class="dark:bg-sky-900 bg-orange-100 h-14 text-left">
+            @livewire('enroll-user-modal')
+
+		<table class="dark:text-gray-200 text-gray-800 text-xl h-full ">
+			<thead class="dark:bg-sky-900 bg-orange-200 h-14 text-left sticky top-7 z-50">
 				<tr>
 					<th>
 						<a wire:navigate href="{{ request()->fullUrlWithQuery(['sort_column' => 'id', 'sort_direction' => $sortDirection == 'desc' ? 'asc' : 'desc']) }}">
@@ -46,7 +49,8 @@
 					</div>
 				<tr class=" flex-row even:dark:bg-slate-700 table-row-hover even:bg-gray-50 border-b-2 text-base h-16"
 				x-data="{ editing: false }"
-				@keydown.escape.window="editing = false">
+				@keydown.escape.window="editing = false"
+				@click.outside.window="editing = false">
 				{{--
 					x-data="{ editing: false }" // sets an initial value for editable components to be hidden
 					@keydown.escape.window="editing = false" // keydown of escape key hides the editable components
@@ -83,13 +87,13 @@
 									<x-delete-button type="submit" onclick="return confirm('Are you sure you want to delete this educational institute?')">Delete</x-delete-button>
 								</form>
 								@endcan
+								<x-button wire:click="showModal">Enroll User</x-button>
 							</div>
 						</td>
 					</tr>
 					@endforeach
 				</tbody>
+
 			</table>
 		</div>
-
-
 </x-app-layout>

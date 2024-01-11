@@ -37,7 +37,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Controllers\\": "app/Http/Controolers/",
+            "Controllers\\": "app/Http/Controllers/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

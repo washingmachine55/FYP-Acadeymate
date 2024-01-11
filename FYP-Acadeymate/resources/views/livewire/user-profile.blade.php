@@ -1,4 +1,5 @@
 <x-app-layout>
+@section('title', $user->name . " - Acadeymate")
 	<div class="flex">
 		@if ( $user->profile_photo_path != NULL )
 		<div class="flex-col m-9" name="image">

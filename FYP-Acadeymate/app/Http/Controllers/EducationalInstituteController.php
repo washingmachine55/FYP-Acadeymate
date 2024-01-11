@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateEducationalInstituteRequest;
 
 class EducationalInstituteController extends Controller
 {
+	public $title;
 	// public $column;
 	// public $direction;
 
@@ -61,7 +62,8 @@ class EducationalInstituteController extends Controller
 	public function show($id)
 	{
 		$educationalInstitute = EducationalInstitute::findOrFail($id);
-		return view('livewire.institute-profile', ['educationalInstitute' => $educationalInstitute])->layout('layouts.app');
+		$this->title = $educationalInstitute->name;
+		return view('livewire.institute-profile', ['educationalInstitute' => $educationalInstitute, 'title' => $educationalInstitute->name]);
 	}
 
 	/**

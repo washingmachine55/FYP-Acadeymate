@@ -27,9 +27,9 @@ class EducationalInstituteFactory extends Factory
 			'city' => $this->faker->city,
 			'country' => $this->faker->country,
 			'website' => $this->faker->url,
-			'logo' => $this->faker->imageUrl($width = 640, $height = 480),
-			'cover_photo' => $this->faker->imageUrl($width = 640, $height = 480),
-			'about' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+			'logo' => $this->faker->imageUrl($width = 360, $height = 360),
+			'cover_photo' => $this->faker->imageUrl($width = 820, $height = 312),
+			'about' => $this->faker->paragraph($nbSentences = 9, $variableNbSentences = true),
 			'created_at' => Carbon::now()->subDays($this->faker->numberBetween(1, 90)),
 			'updated_at' => Carbon::now()->subDays($this->faker->numberBetween(1, 90)),
         ];

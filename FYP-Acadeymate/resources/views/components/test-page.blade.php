@@ -1,4 +1,4 @@
-<div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+<div class="p-6 lg:p-8 bg-orange-100 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
     <x-application-logo class="block h-12 w-auto" />
 
     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
@@ -13,7 +13,8 @@
 			<x-button wire:navigate href="{{ route('create-educational-institute') }}" >Create Educational Institutes</x-button>
 			<x-button wire:navigate href="{{ route('livewire.view-educational-institutes') }}" >View Educational Institutes</x-button>
 			<x-button wire:navigate href="{{ route('livewire.view-educational-institutes') }}" >View Single Educational Institute</x-button>
-			<x-danger-button >View Profiles</x-danger-button>
+			<x-button wire:navigate>  Assign Users to Instituitions</x-button>
+			<x-button >View Profiles</x-button>
 			<x-danger-button >Edit Profile Details</x-danger-button>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
+<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width transition-all duration-500" style=" box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-9xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">

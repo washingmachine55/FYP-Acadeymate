@@ -3,8 +3,9 @@
 use App\Http\Controllers\EducationalInstituteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SortEducationalInstitutes;
+use App\Http\Livewire\AssignUsersToInstituitions;
 
-use App\Livewire;
+use App\Http\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,7 @@ Route::middleware('auth:sanctum',
         [\App\Http\Controllers\UserController::class, 'create']
     );
 	// the code below wont work because it is a livewire component
-	Route::get('/user-actions/view-users',\App\Livewire\ViewUsers::class)->name('livewire.view-users');
+	Route::get('/user-actions/view-users',\App\Http\Livewire\ViewUsers::class)->name('livewire.view-users');
 
 
     Route::post(
@@ -74,6 +75,7 @@ Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
 
 Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'create'])->name('create-educational-institute');
 Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');
+
 Route::get('/institutes/id={id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
 Route::get('/users/id={id}', 'App\Http\Controllers\UserController@show')->name('user-profile.show');
 

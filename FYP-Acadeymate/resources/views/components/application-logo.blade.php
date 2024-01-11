@@ -12,7 +12,7 @@
 		</svg>
 	</div>
 	<div class="title">
-		<h1 class="text-2xl text-white">Acadeymate</h1>
-		<h2 class="text-white">Learn. Teach. Grow.</h2>
+		<h1 class="text-2xl dark:text-white text-black font-extrabold uppercase tracking-widest">Acadeymate</h1>
+		<h2 class="dark:text-white text-black font-semibold tracking-normal">Learn. Teach. Grow.</h2>
 	</div>
 </div>
