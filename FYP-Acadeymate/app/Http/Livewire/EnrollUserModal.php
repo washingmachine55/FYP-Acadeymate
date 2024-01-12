@@ -7,6 +7,7 @@ use Livewire\Component;
 class EnrollUserModal extends Component
 {
 	public $showModal = false;
+	public $maxWidth = "md";
 	public $searchQuery = '';
 	public $users = [];
 	public $selectedUsers = [];
@@ -50,9 +51,12 @@ class EnrollUserModal extends Component
 		->take(7)
 		->get()
 		->toArray();
+	}
 
-
-
+	public function clearSearchBox()
+	{
+		$this->searchQuery = '';
+		$this->users = [];
 	}
 
 	public function removeSelectedUser($userId)
@@ -82,6 +86,9 @@ class EnrollUserModal extends Component
 		// Check if the user is not already selected
 		if (!in_array($user, $this->selectedUsers)) {
 			$this->selectedUsers[] = $user;
+			$this->users = array_filter($this->users, function ($user) use ($userId) {
+				return $user['id'] !== $userId;
+			});
 		}
 	}
 
