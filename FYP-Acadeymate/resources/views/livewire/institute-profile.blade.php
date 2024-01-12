@@ -3,8 +3,9 @@
 	<div class="flex flex-row m-9 h-72" >
 		<img src="{{ $educationalInstitute->cover_photo }}" alt="{{ __('') }}" class="object-cover rounded-2xl h-full w-full " />
 		@can('edit-courses')
-		<div class="absolute left-[91%] z-50">
-			<x-edit-button class="m-9">Edit</x-edit-button>
+		<div class="absolute left-[86%] z-50 m-9">
+			{{-- <x-edit-button class="m-9">Edit</x-edit-button> --}}
+			@livewire('enroll-user-modal')
 		</div>
 		@endcan
 	</div>

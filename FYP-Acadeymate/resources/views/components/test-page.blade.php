@@ -71,7 +71,7 @@
 	<div class="flex mt-10">
 		<div class="flex-row">
 			<h2 class="text-3xl dark:text-white mb-3">Modal Test</h2>
-				@livewire('enroll-user-modal')
+			@livewire('enroll-user-modal')
 		</div>
 	</div>
 

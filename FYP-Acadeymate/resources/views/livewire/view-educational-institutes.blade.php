@@ -3,9 +3,6 @@
     $sortDirection = in_array($sortDirection, ['asc', 'desc']) ? $sortDirection : 'asc';
 @endphp
 <x-app-layout >
-<div class="z-[9999]">
-				@livewire('enroll-user-modal')
-				</div>
 	<div class="p-7" @keyup.escape.window="editing = false" >
 		<table class="dark:text-gray-200 text-gray-800 text-xl h-full ">
 			<thead class="dark:bg-sky-900 bg-orange-200 h-14 text-left sticky top-7 z-50">
@@ -87,16 +84,15 @@
 									<x-delete-button type="submit" onclick="return confirm('Are you sure you want to delete this educational institute?')">Delete</x-delete-button>
 								</form>
 								@endcan
-								<x-button x-on:click="$wire.openModal({{ $educationalInstitute->id }})">Enroll User</x-button>
+								<div class="z-[999]" >
+											@livewire('enroll-user-modal', ['educationalInstitute' => $educationalInstitute])
+								</div>
 
 							</div>
 						</td>
 					</tr>
 					@endforeach
 				</tbody>
-<div class="z-[9999]">
-				@livewire('enroll-user-modal')
-				</div>
 			</table>
 		</div>
 </x-app-layout>
