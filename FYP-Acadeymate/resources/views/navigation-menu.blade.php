@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 mt-3 ml-4 navbar-width transition-all duration-500" style=" box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
+<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 mt-3 ml-4 transition-all duration-500 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 navbar-width" style=" box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-9xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-20">
@@ -13,7 +13,7 @@
 				{{-- Search bar looky thingy --}}
 				<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
 					<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
-						<x-input class="text-left w-96" disabled style="border-radius: 1rem !important;"
+						<x-input class="text-left w-[30rem] font-display" disabled style="border-radius: 1rem !important;"
 						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/> --}}
 						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->afterLast('/', '/') }}"/> --}}
 						placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080')->headline() }}"/>
@@ -26,28 +26,13 @@
 
             </div>
 
-			<div class="flex">
-				<!-- Back button -->
-				{{-- <div class="pt-6 text-center sm:px-6 lg:px-8">
-					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M3 16C3 15.3096 3.55964 14.75 4.25 14.75H24.7868L17.3547 7.12233C16.8729 6.62788 16.8832 5.83649 17.3777 5.35472C17.8721 4.87294 18.6635 4.88322 19.1453 5.37767L28.6424 15.1247C28.8804 15.3672 29 15.6834 29 16C29 16.3166 28.8804 16.6329 28.6422 16.8755L19.1453 26.6223C18.6635 27.1168 17.8721 27.1271 17.3777 26.6453C16.8832 26.1635 16.8729 25.3721 17.3547 24.8777L24.7868 17.25H4.25C3.55964 17.25 3 16.6904 3 16Z" fill="var(--svgcolor)"/>
-					</svg>
-				</div> --}}
-				<!-- Current URL -->
-				<div>
-					@if (isset($header))
-					<x-slot name="header" :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden sm:block">
-						<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
-							<x-input class="text-center rounded-xl w-96" disabled placeholder="> > {{ __('url()->current()') }}"/>
-							{{-- Ooga booga --}}
-							{{-- {{ $header }} --}}
-						</div>
-					</x-slot>
-					@else
-
-					@endif
-				</div>
-			</div>
+			{{-- <div class="flex">
+				<div class="py-5 mx-auto text-center sm:px-6 lg:px-8 font-display"> --}}
+						{{-- <x-input class="text-left w-[30rem] font-display" disabled style="border-radius: 1rem !important;"
+						placeholder="@yield( 'title', 'Acadeymate' )"/> --}}
+						{{-- <h1>@yield('title')</h1> --}}
+				{{-- </div>
+			</div> --}}
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
@@ -56,7 +41,7 @@
                         <x-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium font-display leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md dark:text-gray-400 dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700">
                                         {{ Auth::user()->currentTeam->name }}
 
                                         <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -108,8 +93,8 @@
 				</div>
 
 				@if ( Auth::check() )
-				<div class="relative h-10 pl-1 ml-3 text-sm leading-4 text-gray-900 transition duration-150 ease-in-out bg-orange-400 dark:text-gray-900 hover:bg-orange-300 hover:text-black font-semibold"
-                    style="border-radius: 0.7625rem; border: 1px solid rgba(255, 255, 255, 0.30); padding-top: 0.6875rem;">
+				<div class="flex relative h-10  ml-3 text-sm font-normal leading-4 text-gray-900 transition duration-300 ease-in-out bg-orange-400 border-2 border-orange-500 font-display"
+                    style="border-radius: 0.7625rem;">
 						<div id="role" class="flex items-center justify-center px-3 m-auto">
 							{{ Auth::user()->user_role }}
 						</div>
@@ -119,7 +104,7 @@
 				@endif
 
                 <!-- Settings Dropdown -->
-                <div class="relative pl-1 ml-3 text-sm font-normal leading-4 text-black transition duration-150 ease-in-out border-2 border-gray-500 dark:border-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:border-blue-600 border-opacity-30"
+                <div class="flex relative  ml-3 text-sm font-normal leading-4 text-black transition duration-300 ease-in-out border-2 border-gray-500 dark:border-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:bg-orange-200 dark:hover:bg-orange-400 dark:hover:bg-opacity-35 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 border-opacity-30 dark:hover:border-orange-500 hover:border-orange-500 font-display"
                     style="border-radius: 1.5625rem 3.125rem 3.125rem 1.5625rem;">
 					<x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -132,8 +117,8 @@
                                     {{ Auth::user()->name }}
                                 </span>
                                 <button
-                                    class="flex text-sm transition border-2 border-transparent border-gray-500 rounded-full focus:outline-none focus:border-gray-300 border-opacity-30">
-                                    <img class="object-cover w-8 h-8 rounded-full"
+                                    class="flex text-sm transition  rounded-full focus:outline-none focus:border-gray-300">
+                                    <img class="object-cover w-9 h-9 rounded-full"
                                         src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
                             </div>

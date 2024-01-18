@@ -13,17 +13,25 @@
 
 		@endif
 			<h1 class="text-7xl mt-9 dark:text-white text-black text-opacity-80 font-bold" >{{ $user->name }}</h1>
+			@if ($user->hasRole('Guardian'))
+				<h2 class="text-2xl mt-3 dark:text-white text-black text-opacity-80">Is a {{ $user->user_role }} of <a href="{{ route('user-profile.show', $user->id) }}">{{ $user->name }}</a></h2>
+
+			@else
 			<h2 class="text-2xl mt-3 dark:text-white text-black text-opacity-80">Currently a {{ $user->user_role }}</h2>
-			<h2 class="text-2xl mt-3 dark:text-white text-black text-opacity-80">Main contact email: <a class="italic hover:underline duration-500" href="">{{ $user->email }}</a></h2>
+
+			@endif
+			<h2 class="text-2xl mt-3 dark:text-white text-black text-opacity-80">Main contact email: <a class="italic" href="">{{ $user->email }}</a></h2>
 			<h3 class="text-xl mt-3 dark:text-white text-black text-opacity-80">Profile last updated: {{ $user->updated_at->format('D, d M Y @ h:m A') }}
 			({{ Carbon\Carbon::parse($user->updated_at)->subDays()->diffForHumans()  }})</h3>
 		</div>
 
-		{{-- @can('edit-courses') --}}
-		<div>
-			<x-edit-button class="m-9">Edit</x-edit-button>
-		</div>
-		{{-- @endcan --}}
+		@if ((Auth::user()->id == $user->id) || (Auth::user()->hasRole('Developer/Super Admin')))
+			<div>
+				<x-edit-button class="m-9">Edit</x-edit-button>
+			</div>
+		@else
+
+		@endif
 
 	</div>
 </x-app-layout>

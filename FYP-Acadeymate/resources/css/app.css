@@ -11,7 +11,10 @@ body {
 }
 
 :root {
-	--svgcolor: white;
+	--svgcolor: rgb(255, 255, 255);
+	--underline-color: rgba(255, 255, 255, 0.5);
+	--alpha-underline-light: 0.5;
+	--alpha-underline-dark: 0.6;
 	--svgColorHover: #d7263d;
 	/* transition: fill 0.2s ease-in-out; */
 }
@@ -19,9 +22,9 @@ body {
 	--svgColorHover: #d7263d;
 }
 svg path {
-	transition: fill 0.2s ease-in-out;
+	transition: fill 0.6s ease-in-out;
 }
-svg path:hover {
+/* svg path:hover {
 	fill: var(--svgColorHover);
 	transition: fill 0.2s ease-in-out;
 }
@@ -31,7 +34,7 @@ svg path:hover {
 .svgIconsHover:hover {
 	fill: var(--svgColorHover);
 	transition: fill 0.2s ease-in-out;
-}
+} */
 
 .css-selector {
 	background: linear-gradient(208deg, #ff9000, #d7263d, #4a72ff);
@@ -43,24 +46,43 @@ svg path:hover {
 }
 
 @-webkit-keyframes bgGradientAnimation {
-	0%{background-position:62% 0%}
-	50%{background-position:39% 100%}
-	100%{background-position:62% 0%}
+	0% {
+		background-position: 62% 0%;
+	}
+	50% {
+		background-position: 39% 100%;
+	}
+	100% {
+		background-position: 62% 0%;
+	}
 }
 @-moz-keyframes bgGradientAnimation {
-	0%{background-position:62% 0%}
-	50%{background-position:39% 100%}
-	100%{background-position:62% 0%}
+	0% {
+		background-position: 62% 0%;
+	}
+	50% {
+		background-position: 39% 100%;
+	}
+	100% {
+		background-position: 62% 0%;
+	}
 }
 @keyframes bgGradientAnimation {
-	0%{background-position:62% 0%}
-	50%{background-position:39% 100%}
-	100%{background-position:62% 0%}
+	0% {
+		background-position: 62% 0%;
+	}
+	50% {
+		background-position: 39% 100%;
+	}
+	100% {
+		background-position: 62% 0%;
+	}
 }
 
 #sidenav {
-	width: 110px !important;
-	transition: all 0.6s !important;
+	/* width: 105px !important; */
+	width: 6.563rem !important;
+	transition: all 0.6s ease !important;
 }
 
 #sidenav:hover {
@@ -68,17 +90,17 @@ svg path:hover {
 }
 
 #sidenav-child {
-	width: 90px !important;
-	transition: all 0.6s !important;
+	width: 5.313rem !important;
+	transition: all 0.6s ease !important;
 }
 
 #sidenav-child:hover {
 	width: 18rem !important;
 }
 
-#sidenav-child:child {
-	transition: all 0.6s !important;
-}
+/* #sidenav-child:child {
+	transition: all 0.6s ease !important;
+} */
 
 /* Side Nav CSS Starts */
 .container-side-nav {
@@ -106,13 +128,13 @@ svg path:hover {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	transition: all 0.5s ease !important;
+	transition: all 0.6s ease !important;
 }
 
 .active {
 	background-color: #f8a789 !important;
 	color: white !important;
-	fill: #F5865D;
+	fill: #f5865d;
 }
 
 .active-text {
@@ -146,17 +168,15 @@ svg path:hover {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 
-.example::-webkit-scrollbar
-{
+.example::-webkit-scrollbar {
 	display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 
-.example
-{
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
+.example {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 }
 
 table {
@@ -172,6 +192,7 @@ table tbody tr td:first-child {
 }
 table thead tr th:first-child {
 	padding-left: 2rem !important;
+	transition: all 0.6s ease !important;
 }
 
 th:first-of-type {
@@ -191,7 +212,6 @@ tr:last-of-type td:last-of-type {
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
 }
-
 .table-row-hover:hover {
 	transform: translateY(-5px);
 }
@@ -220,4 +240,49 @@ tr:last-of-type td:last-of-type {
 
 .main-background {
 	background-color: salmon;
+}
+
+span.sidebar-span {
+	text-warp: nowrap;
+	/* display: none; */
+}
+
+.container-side-nav:hover span.sidebar-span {
+	display: block;
+	transition: all 0.9s ease !important;
+}
+
+/* div:hover span {
+	display: block;
+} */
+
+.fill-available {
+	width: -webkit-fill-available;
+}
+
+.form-center-container {
+	min-height: 100%;
+	min-width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.action-container {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+a {
+	width: calc(100%);
+	/* background-image: linear-gradient(transparent calc(100% - 3px), var(--svgcolor) 10px); */
+	background-image: linear-gradient(transparent calc(100% - 3px), var(--underline-color) 10px);
+	background-repeat: no-repeat;
+	background-size: 0% 100%;
+	transition: background-size 0.5s;
+}
+
+a:hover {
+	background-size: 100% 100%;
 }

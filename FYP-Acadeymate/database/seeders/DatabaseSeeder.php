@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             RoleAndPermissionSeeder::class,
         ]);
 
-		\App\Models\User::factory(15)->create()->each(function ($user) {
+		\App\Models\User::factory(30)->create()->each(function ($user) {
 			$user->assignRole($user->user_role);
 
 			$role = \Spatie\Permission\Models\Role::where('name', $user->user_role)->first();
@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
 			} else {
 				return;
 			}
-    	});
+		});
 
 		// $this->call([
         //     EducationalInstituteSeeder::class,
@@ -76,7 +76,10 @@ class DatabaseSeeder extends Seeder
 
 		\App\Models\EducationalInstitute::factory(15)->create();
 
-		\App\Models\EnrolledUnder::factory(15)->create();
+		// \App\Models\EnrolledUnder::factory(15)->create();
+		for ($i = 0; $i < 15; $i++) {
+			\App\Models\EnrolledUnder::factory()->create();
+		}
 
     }
 }

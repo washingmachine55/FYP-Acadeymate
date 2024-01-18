@@ -59,12 +59,14 @@ class EducationalInstituteController extends Controller
 	/**
 	* Display the specified resource.
 	*/
-	public function show($id)
-	{
-		$educationalInstitute = EducationalInstitute::findOrFail($id);
-		$this->title = $educationalInstitute->name;
-		return view('livewire.institute-profile', ['educationalInstitute' => $educationalInstitute, 'title' => $educationalInstitute->name]);
-	}
+	// public function show($id)
+	// {
+	// 	// $educationalInstitute = EducationalInstitute::findOrFail($id);
+	// 	// $this->title = $educationalInstitute->name;
+	// 	// return view('livewire.institute-profile', ['educationalInstitute' => $educationalInstitute, 'title' => $educationalInstitute->name]);
+	// 	return redirect()->route('institute-profile', ['id' => $id]);
+
+	// }
 
 	/**
 	* Show the form for editing the specified resource.
@@ -92,25 +94,25 @@ class EducationalInstituteController extends Controller
 			$educationalInstitute->forceFill([
 				'name' => $request->input(['fullname']),
 				'email' => $request->input(['useremail']),
-				])->save();
+			])->save();
 
-				return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute edited successfully.');
-
-			}
-
-			/**
-			* Remove the specified resource from storage.
-			*/
-			public function destroy($educationalInstitute)
-			{
-
-				$userToDelete = EducationalInstitute::findOrFail($educationalInstitute);
-
-				DB::transaction(function () use ($userToDelete) {
-					$userToDelete->delete();
-				});
-
-				return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute deleted successfully.');
-			}
+			return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute edited successfully.');
 
 		}
+
+		/**
+		* Remove the specified resource from storage.
+		*/
+		public function destroy($educationalInstitute)
+		{
+
+			$userToDelete = EducationalInstitute::findOrFail($educationalInstitute);
+
+			DB::transaction(function () use ($userToDelete) {
+				$userToDelete->delete();
+			});
+
+			return redirect()->route('livewire.view-educational-institutes')->with('success', 'Educational Institute deleted successfully.');
+		}
+
+}

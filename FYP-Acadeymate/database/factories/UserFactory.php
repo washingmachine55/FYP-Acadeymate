@@ -29,7 +29,8 @@ class UserFactory extends Factory
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
-			'user_role' => $this->faker->randomElement(['Developer/Super Admin', 'Educational Institute Admin', 'Lecturer', 'Guardian', 'Student']),
+			// 'user_role' => $this->faker->randomElement(['Developer/Super Admin', 'Educational Institute Admin', 'Lecturer', 'Guardian', 'Student']),
+			'user_role' => $this->faker->randomElement(['Educational Institute Admin', 'Lecturer', 'Guardian', 'Student']),
             'remember_token' => Str::random(10),
             'profile_photo_path' => null,
             'current_team_id' => null,

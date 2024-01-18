@@ -23,9 +23,13 @@ window.themeSwitcher = function () {
 			localStorage.setItem('isDarkGlobal', this.switchOn);
 
 			if (localStorage.getItem('isDarkGlobal') === 'true') {
-				r.style.setProperty('--svgcolor', 'white');
+				r.style.setProperty('--svgcolor', 'rgb(255, 255, 255)');
+				// r.style.setProperty('--underline-color', 'rgb(255, 255, 255, 0.7)');
+				r.style.setProperty('--underline-color', 'rgba(255, 255, 255, var(--alpha-underline-dark))');
 			} else if (localStorage.getItem('isDarkGlobal') === 'false') {
-				r.style.setProperty('--svgcolor', 'black');
+				r.style.setProperty('--svgcolor', 'rgb(0, 0, 0)');
+				// r.style.setProperty('--underline-color', 'rgb(0, 0, 0, 0.7)');
+				r.style.setProperty('--underline-color', 'rgba(0, 0, 0,  var(--alpha-underline-light))');
 			} else {
 				null;
 			}

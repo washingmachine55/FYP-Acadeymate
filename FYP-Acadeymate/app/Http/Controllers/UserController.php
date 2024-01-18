@@ -32,13 +32,13 @@ class UserController extends Controller
 	public function index()
 	{
     	// $users = \App\Models\User::all();
-    	$users = \App\Models\User::where('user_role', 'Student')->orderByDesc('user_role')->get();
-    	return view('livewire.view-users', ['users' => $users]);
+		$users = \App\Models\User::where('user_role', 'Student')->orderByDesc('user_role')->get();
+		return view('livewire.view-users', ['users' => $users]);
 	}
 
 	public function show($id)
 	{
-    	$userProfile = User::findOrFail($id);
+		$userProfile = User::findOrFail($id);
 		return view('livewire.user-profile', ['user' => $userProfile]);
 	}
 }

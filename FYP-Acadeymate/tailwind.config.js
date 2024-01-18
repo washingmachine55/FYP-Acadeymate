@@ -15,6 +15,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                display: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
         },
 		screens: {
@@ -48,7 +49,10 @@ export default {
 
 			// '2xl': {'min': '1536px'},
 			// // => @media (min-width: 1536px) { ... }
-		}
+		},
+		transitionProperty: {
+			'text-decoration': 'text-decoration',
+		},
     },
 
     plugins: [forms, typography],

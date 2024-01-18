@@ -17,18 +17,18 @@
 				<italic>{{ __("When there's at least 1 user in the search result, press enter to select the user ") }}</italic>
 
                 <div class="mt-4" x-data="{}" x-on:enrolling-users-to-institutes.window="setTimeout(() => $refs.enrollingUsers.focus(), 250)">
-				<div class="flex flex-row justify-around">
-					<x-input type="text" class="mt-1 block w-3/4 float-start"
+				<div class="flex flex-row justify-around space-x-3">
+					<x-input type="text" class="mt-1 block w-3/4 float-start fill-available"
 					wire:model.live.debounce.150ms="searchQuery"
 					x-ref="enrollingUsers"
 					placeholder="{{ __('Enter User\'s Name or Email here') }}"
 					wire:keydown.enter="selectSearchedUser"
-					/> <x-button class="mt-1 block float-end" wire:click='clearSearchBox'>Clear Results</x-button>
+					/> <x-button class="mt-1 min-w-max block float-end" wire:click='clearSearchBox'>Clear Results</x-button>
 					</div>
 
 
 					<div class="flex w-full text-center place-content-evenly text-nowrap">
-						<div class="mt-2 flex-col w-1/2">
+						<div class="mt-2 flex-col w-1/2 border-r">
 							<h2 class="text-lg dark:text-white text-black">Search Results</h2>
 							<div class="flex items-center flex-wrap">
 								@foreach($users as $user)
@@ -40,7 +40,7 @@
 						</div>
 						<div class="mt-2 flex-col w-1/2">
 							<h2 class="text-lg dark:text-white text-black">Selected Users</h2>
-							<div class="flex items-center flex-wrap">
+							<div class="flex items-center flex-wrap ml-6">
 								@foreach($selectedUsers as $user)
 								<x-secondary-button
 									wire:click='removeSelectedUser({{ $user["id"] }})'
@@ -57,10 +57,14 @@
                     {{ __('View/Edit List of Other Students that are ') }} <br/>
 					{{ __('currently enrolled in this educational institute') }}
                 </a>
-				<div class="justify-end">
+				<div class="justify-end space-x-2">
 					<x-secondary-button wire:click="$toggle('showModal')" wire:loading.attr="disabled">
 						{{ __('Cancel') }}
 					</x-secondary-button>
+
+					<x-danger-button wire:click="clearSelectedUsers" wire:loading.attr="disabled">
+						{{ __('Clear Selected Users') }}
+					</x-danger-button>
 
 					<x-button class="ms-3" wire:click="enrollSelectedUsers" wire:loading.attr="disabled">
 						{{ __('Enroll Selected Users') }}

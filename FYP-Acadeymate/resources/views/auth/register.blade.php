@@ -34,7 +34,7 @@
                 <x-label for="user_role" value="{{ __('Register As') }}" />
 					<div align="left" class="block mt-1 w-full">
 
-						<select name="user_role" class="block pt-2 pb-2 mt-1 w-full bg-white text-black border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-white h-11 dark:hover:bg-indigo-600 focus:border-indigo-500 dark:focus:text-white dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 transition-all duration-500 hover:border-indigo-500'">
+						<select name="user_role" class="block pt-2 pb-2 mt-1 w-full bg-white text-black border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-white h-11 dark:hover:border-orange-500 focus:border-orange-500 dark:focus:text-white dark:focus:border-orange-600 focus:ring-orange-500 dark:focus:ring-orange-600 transition-all duration-500 hover:border-orange-500'">
 								<option name="user_role" value="" selected disabled>
 									Select one
 								</option>
@@ -68,8 +68,8 @@
 
                             <div class="ms-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
                                 ]) !!}
                             </div>
                         </div>
@@ -78,7 +78,7 @@
             @endif
 
             <div class="flex items-center justify-end mt-4">
-                <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+                <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

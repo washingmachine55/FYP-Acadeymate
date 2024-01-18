@@ -69,6 +69,15 @@ class EnrollUserModal extends Component
 		$this->selectedUsers = array_values($this->selectedUsers);
 	}
 
+	public function clearSelectedUsers()
+	{
+		// If there's more than one selected user, remove them
+		if (count($this->selectedUsers) > 0) {
+			$this->selectedUsers = [];
+			$this->selectedUserIds = [];
+		}
+	}
+
 	public function selectSearchedUser()
 	{
 		// If there's only one user in the search results, add them to the selected users

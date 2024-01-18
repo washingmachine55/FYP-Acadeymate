@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use \App\Models\EducationalInstitute;
+use \App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\EnrolledUnder>
@@ -16,9 +18,18 @@ class EnrolledUnderFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'user_id' => \App\Models\User::factory(),
-            'educational_institute_id' => \App\Models\EducationalInstitute::factory(),
-        ];
+		$user = User::whereDoesntHave('educationalInstitutes')->inRandomOrder()->first();
+		$educationalInstitute = EducationalInstitute::inRandomOrder()->first();
+
+        if ($user && $educationalInstitute) {
+			return [
+				'user_id' => $user->id,
+				'educational_institute_id' => $educationalInstitute->id,
+				'created_at' => now(),
+				'updated_at' => now(),
+			];
+		}
+
+		return [];
     }
 }

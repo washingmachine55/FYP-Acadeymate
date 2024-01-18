@@ -18,7 +18,7 @@ use App\Http\Livewire;
 |
 */
 
-Route::resource('EducationalInstitute', EducationalInstituteController::class);
+// Route::resource('EducationalInstitute', EducationalInstituteController::class);
 
 
 Route::get('/', function () {
@@ -52,6 +52,7 @@ Route::middleware('auth:sanctum',
     );
 	// the code below wont work because it is a livewire component
 	Route::get('/user-actions/view-users',\App\Http\Livewire\ViewUsers::class)->name('livewire.view-users');
+	Route::get('/user-actions/view-educational-institutes',\App\Http\Livewire\ViewEducationalInstitutes::class)->name('livewire.view-educational-institutes');
 
 
     Route::post(
@@ -74,8 +75,11 @@ Route::get('/profiles/{user}', 'App\Http\Controllers\ProfilesController@index');
 
 
 Route::get('/user-actions/create-educational-institute', [EducationalInstituteController::class, 'create'])->name('create-educational-institute');
-Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');
+// Route::get('/user-actions/view-educational-institutes',[EducationalInstituteController::class, 'index'])->name('livewire.view-educational-institutes');
 
-Route::get('/institutes/id={id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
+// Route::get('/institute-profile/{id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
+Route::get('/institute-profile/{id}', \App\Http\Livewire\InstituteProfile::class)->name('institute-profile');
+
+
 Route::get('/users/id={id}', 'App\Http\Controllers\UserController@show')->name('user-profile.show');
 

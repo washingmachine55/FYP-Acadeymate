@@ -28,7 +28,7 @@
             Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
         </p>
 
-        <p class="mt-4 text-sm">
+        <p class="mt-4 text-sm inline-flex">
             <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Explore the documentation
 
@@ -53,7 +53,7 @@
             Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
         </p>
 
-        <p class="mt-4 text-sm">
+        <p class="mt-4 text-sm inline-flex">
             <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Start watching Laracasts
 

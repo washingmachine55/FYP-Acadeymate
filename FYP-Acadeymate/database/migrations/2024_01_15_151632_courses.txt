@@ -1,0 +1,32 @@
+<?php
+// WORK IN PROGRESS
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('courses', function (Blueprint $table) {
+            $table->id()->onDelete('cascade');
+			$table->string('course_name');
+			$table->foreignId('included_in_batch_id')->references('id')->on('batches')->nullable()->constrained()->onDelete('cascade');
+			$table->foreignId('course_by_educational_institute_id')->references('id')->on('educational_institutes')->nullable()->constrained()->onDelete('cascade');
+			$table->foreignId('created_by_user_id')->references('id')->on('users')->nullable()->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('courses');
+    }
+};
