@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.cwd": "${workspaceFolder}/FYP-Acadeymate",
+		"vscode-edge-devtools.browserFlavor": "Default",
+		"vscode-edge-devtools.defaultEntrypoint": "index.php",
+		"vscode-edge-devtools.defaultUrl": "http://127.0.0.1:8080/",
+		"vscode-edge-devtools.pathMapping": {
+			
+			"/": "${workspaceFolder}"
+		}
+	}
+}

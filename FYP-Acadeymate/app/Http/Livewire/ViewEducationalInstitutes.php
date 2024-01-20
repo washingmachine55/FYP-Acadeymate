@@ -42,7 +42,7 @@ class ViewEducationalInstitutes extends Component
 		// create a query to get all users as well as the institutes they are enrolled under
 		$this->educationalInstitutes = EducationalInstitute::with('users')->get();
 
-		return view('livewire.view-educational-institutes', ['educationalInstitutes' => 'educationalInstitutes', 'title' => 'View Users']);
+		// return view('livewire.view-educational-institutes', ['educationalInstitutes' => 'educationalInstitutes', 'title' => 'View Users']);
 
 		// // if ($search = 'Developer/Super Admin') {
 			// // 	$this->users = \App\Models\User::where('user_role', 'Developer/Super Admin')->orderByDesc('user_role')->get();
@@ -72,7 +72,6 @@ class ViewEducationalInstitutes extends Component
 
 		return view('livewire.view-educational-institutes', ['educationalInstitutes' => $educationalInstitutes]);
 
-		dd($educationalInstitutes);
     }
 
 	public function sortBy($column, $sortDirection)
@@ -135,6 +134,14 @@ class ViewEducationalInstitutes extends Component
 		session()->flash('flash.banner', 'All info for ' . $educationalInstitute->name . ' with the ID ' . $educationalInstitute->id . ', has been updated successfully!');
 
 		return redirect()->route('livewire.view-educational-institutes');
+
+
+		// update the row containing the specific educational institute on the frontend
+		$index = $this->educationalInstitutes->search(function ($item) use ($id) {
+			return $item->id == $id;
+		});
+		// $this->educationalInstitutes[$index] = $educationalInstitute->fresh();
+
 
 	}
 
