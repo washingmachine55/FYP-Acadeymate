@@ -27,11 +27,11 @@
 
 	<div class="flex flex-row h-screen main-background">
 		<x-sidebar class=""></x-sidebar>
-		<div class="flex flex-col h-full justify-items-start">
+		<div class="flex flex-col justify-items-start">
 			@livewire('navigation-menu')
 		</div>
-		<div class="container-side-nav w-full mr-4 mb-4">
-			<div class="overflow-auto main-container example bg-orange-50 shadow-xl dark:bg-gray-800 sm:rounded-lg transition-all duration-500" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);"> {{ $slot }} </div>
+		<div class="container-side-nav w-full sm:fill-available-height md:fill-available-height md:mt-[7.15rem] sm:mt-[5.5rem] md:ml-5 lg:ml-4 xl:ml-4 sm:ml-4">
+			<div class="overflow-auto main-container example bg-orange-50 shadow-xl dark:bg-gray-800 sm:rounded-lg transition-all duration-500 sm:ml-0 md:ml-[0.4rem] sm:mr-4 mr-4" style="border-radius: 1.5625rem; box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25); height: -webkit-fill-available;"> {{ $slot }} </div>
 		</div>
 	</div>
 

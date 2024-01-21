@@ -1,19 +1,31 @@
-<nav x-data="{ open: false }" class="fixed top-0 left-0 z-50 mt-3 ml-4 transition-all duration-500 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 navbar-width" style=" box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
+<nav
+x-data="{ open: false }"
+class="fixed left-0 z-50 mt-4 ml-4 mr-4 transition-all duration-500 bg-orange-100 border-b-2 dark:bg-gray-800 dark:border-gray-700 fill-available-w md:rounded-tr-[3rem] md:rounded-tl-[1.5625rem] md:rounded-br-[3rem] md:rounded-bl-[1.5625rem] sm:rounded-2xl"
+style=" box-shadow: 2px 0px 4px 1px rgba(0, 0, 0, 0.25);">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-9xl sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20">
+        <div class="flex justify-between md:h-20 sm:h-14">
             <div class="flex">
+				<!-- Hamburger -->
+				<div class="flex items-center -ms-2 sm:flex md:hidden">
+					<button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
+						<svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+							<path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							<path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
                 <!-- Logo -->
-                <div class="flex items-center shrink-0">
+                <div class="md:flex sm:hidden items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
                         <x-application-mark class="block w-auto h-9" />
                     </a>
                 </div>
 
 				{{-- Search bar looky thingy --}}
-				<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block sm:hidden">
+				<div name="header" :class="{'block': open, 'hidden': ! open}" class="hidden lg:block xl:block sm:hidden">
 					<div class="py-5 mx-auto text-center sm:px-6 lg:px-8">
-						<x-input class="text-left w-[30rem] font-display" disabled style="border-radius: 1rem !important;"
+						<x-input class="text-left xl:w-[30rem] lg:w-[20rem] font-display" disabled style="border-radius: 1rem !important;"
 						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080') }}"/> --}}
 						{{-- placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->afterLast('/', '/') }}"/> --}}
 						placeholder="> {{ \Illuminate\Support\Str::of(url()->current())->ltrim('http://127.0.0.1:8080')->headline() }}"/>
@@ -93,7 +105,7 @@
 				</div>
 
 				@if ( Auth::check() )
-				<div class="flex relative h-10  ml-3 text-sm font-normal leading-4 text-gray-900 transition duration-300 ease-in-out bg-orange-400 border-2 border-orange-500 font-display"
+				<div class="md:flex relative h-10 sm:hidden ml-3 text-sm font-normal leading-4 text-gray-900 transition duration-300 ease-in-out bg-orange-400 border-2 border-orange-500 font-display"
                     style="border-radius: 0.7625rem;">
 						<div id="role" class="flex items-center justify-center px-3 m-auto">
 							{{ Auth::user()->user_role }}
@@ -104,7 +116,7 @@
 				@endif
 
                 <!-- Settings Dropdown -->
-                <div class="flex relative  ml-3 text-sm font-normal leading-4 text-black transition duration-300 ease-in-out border-2 border-gray-500 dark:border-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:bg-orange-200 dark:hover:bg-orange-400 dark:hover:bg-opacity-35 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 border-opacity-30 dark:hover:border-orange-500 hover:border-orange-500 font-display"
+                <div class="flex relative sm:-me-4 md:me-0 ml-3 text-sm font-normal leading-4 text-black transition duration-300 ease-in-out border-2 border-gray-500 dark:border-gray-400 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100 focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 hover:bg-orange-200 dark:hover:bg-orange-400 dark:hover:bg-opacity-35 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 border-opacity-30 dark:hover:border-orange-500 hover:border-orange-500 font-display"
                     style="border-radius: 1.5625rem 3.125rem 3.125rem 1.5625rem;">
 					<x-dropdown align="right" width="48">
                         <x-slot name="trigger">
@@ -170,43 +182,38 @@
                     </x-dropdown>
                 </div>
             </div>
-
-            <!-- Hamburger -->
-            <div class="flex items-center -me-2 sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
-                    <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
         </div>
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    {{-- <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden"> --}}
+    <div :class="{'block': open, 'hidden': ! open}" >
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('user-actions') }}" :active="request()->routeIs('user-actions')">
+                {{ __('User Actions') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="pt-4 pb-4 border-t border-gray-200 dark:border-gray-600">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <div class="shrink-0 me-3">
-                        <img class="object-cover w-10 h-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    <div class="shrink-0 me-7 ms-3">
+                        <img class="object-cover w-14 h-14 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                     </div>
                 @endif
 
                 <div>
-                    <div class="text-base font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+                    <div class="text-base font-display font-medium text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                     <div class="text-sm font-medium text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="text-sm font-medium text-gray-500">{{ Auth::user()->user_role }}</div>
                 </div>
             </div>
 
-            <div class="mt-3 space-y-1">
+            {{-- <div class="mt-3 space-y-1">
 				 <!-- Public Profile View -->
                 <x-responsive-nav-link href="{{ route('user-profile.show', Auth::user()->id) }}" :active="request()->routeIs('user-profile.show')">
                     {{ __('View/Edit Profile') }}
@@ -264,7 +271,7 @@
                         @endforeach
                     @endif
                 @endif
-            </div>
+            </div> --}}
         </div>
     </div>
 </nav>
