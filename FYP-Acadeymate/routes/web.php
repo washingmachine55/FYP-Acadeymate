@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EducationalInstituteController;
+use App\Http\Controllers\GuardianController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\SortEducationalInstitutes;
 use App\Http\Livewire\AssignUsersToInstituitions;
@@ -18,7 +19,9 @@ use App\Http\Livewire;
 |
 */
 
-// Route::resource('EducationalInstitute', EducationalInstituteController::class);
+// Resource routes for CRUD operations
+Route::resource('EducationalInstitute', EducationalInstituteController::class);
+Route::resource('Guardian', GuardianController::class);
 
 
 Route::get('/', function () {
@@ -79,7 +82,7 @@ Route::get('/user-actions/create-educational-institute', [EducationalInstituteCo
 
 // Route::get('/institute-profile/{id}', 'App\Http\Controllers\EducationalInstituteController@show')->name('institutes.show');
 Route::get('/institute-profile/{id}', \App\Http\Livewire\InstituteProfile::class)->name('institute-profile');
-
-
 Route::get('/users/id={id}', 'App\Http\Controllers\UserController@show')->name('user-profile.show');
 
+Route::get('/users/view-guardians', \App\Http\Livewire\ViewGuardians::class)->name('view-guardians');
+Route::get('/users/assign-guardians', \App\Http\Livewire\AssignGuardians::class)->name('assign-guardians');

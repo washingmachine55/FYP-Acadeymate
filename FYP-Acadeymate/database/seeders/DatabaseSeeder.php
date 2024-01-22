@@ -81,5 +81,9 @@ class DatabaseSeeder extends Seeder
 			\App\Models\EnrolledUnder::factory()->create();
 		}
 
+		$this->call([
+            GuardianSeeder::class,
+        ]);
+
     }
 }

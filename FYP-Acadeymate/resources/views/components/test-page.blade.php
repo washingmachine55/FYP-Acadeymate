@@ -27,7 +27,8 @@
 			<x-danger-button >View Educational Institute Admins</x-danger-button>
 			<x-danger-button >View Lecturers</x-danger-button>
 			<x-danger-button >View Students</x-danger-button>
-			<x-danger-button >View Guardians</x-danger-button>
+			<x-secondary-button wire:navigate href="{{ route('view-guardians') }}" >View Guardians</x-secondary-button>
+			<x-secondary-button wire:navigate href="{{ route('assign-guardians') }}" >Assign Guardians</x-secondary-button>
 		</div>
 	</div>
 	<div class="flex mt-10">

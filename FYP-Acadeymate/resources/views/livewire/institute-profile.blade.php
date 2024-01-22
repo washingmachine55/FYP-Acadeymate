@@ -8,14 +8,15 @@
 			<img src="{{ $educationalInstitute->cover_photo }}" alt="{{ __('') }}" class="object-cover rounded-2xl h-full w-full " />
 		@endif
 		@can('edit-courses')
-		<div class="absolute left-[90%] z-20 m-9 transform-cpu action-container">
+		<div class="absolute left-[90%] z-20 m-9 transform-cpu flex items-center justify-center">
 			<div
-				class="flex rounded-2xl justify-center items-center h-14 w-14 hover:-translate-x-20 bg-orange-400 bg-opacity-70
-				hover:bg-opacity-100 float-right right-0  hover:w-36 hover:h-36  transition-all duration-1000 ease-in-out"
+				{{-- class="flex rounded-2xl justify-center items-center h-14 w-14 active:-translate-x-20 bg-orange-400 bg-opacity-70 active:bg-opacity-100 float-right right-0  active:w-36 active:h-36  transition-all duration-1000 ease-in-out" --}}
+				class="flex justify-center items-center h-14 w-14 active:-translate-x-20 float-right right-0 transition-all duration-1000 ease-in-out rounded-2xl border dark:border-gray-400 border-gray-800"
+				:class="{'flex -translate-x-20 bg-orange-400 bg-opacity-90 w-36 h-36': ! hidden, 'flex': hidden}"
 				x-data="{ hidden: true }"
 				x-init="hidden = true"
-				@mouseenter="hidden = false"
-				@mouseleave="hidden = true"
+				@click="hidden = ! hidden"
+				@click.outside.window="hidden = true"
 				>
 					<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-center duration-75 transition-all" x-show="hidden">
 						<path d="M3.49984 10.3334H16.7499C17.1359 12.2352 18.8174 13.6667 20.8332 13.6667C22.849 13.6667 24.5304 12.2352 24.9165 10.3334H28.4998C28.9601 10.3334 29.3332 9.96028 29.3332 9.50004C29.3332 9.0398 28.9601 8.66671 28.4998 8.66671H24.9165C24.5304 6.76484 22.849 5.33337 20.8332 5.33337C18.8174 5.33337 17.1359 6.76484 16.7499 8.66671H3.49984C3.0396 8.66671 2.6665 9.0398 2.6665 9.50004C2.6665 9.96028 3.0396 10.3334 3.49984 10.3334ZM3.49984 23H7.24985C7.63591 24.9019 9.31737 26.3334 11.3332 26.3334C13.349 26.3334 15.0304 24.9019 15.4165 23H28.4998C28.9601 23 29.3332 22.6269 29.3332 22.1667C29.3332 21.7065 28.9601 21.3334 28.4998 21.3334H15.4165C15.0304 19.4315 13.349 18 11.3332 18C9.31737 18 7.63591 19.4315 7.24985 21.3334H3.49984C3.0396 21.3334 2.6665 21.7065 2.6665 22.1667C2.6665 22.6269 3.0396 23 3.49984 23Z" fill="var(--svgcolor)"/>
@@ -23,7 +24,8 @@
 
 				{{-- This works but needs to be designed better, and perhaps be replaced with an SVG icon --}}
 					<div
-						class="flex min-w-full min-h-full space-y-2 text-nowrap justify-center items-center flex-col"
+						class="hidden min-w-full min-h-full space-y-2 text-nowrap justify-center items-center flex-col"
+						:class="{'flex': open, 'hidden': ! open}"
 						x-show="!hidden"
 						x-transition:enter="transition duration-1000 ease"
 						x-transition:enter-start="opacity-0"
@@ -33,8 +35,8 @@
 						x-transition:leave-end="opacity-0"
 						>
 							<x-button wire:click="openTestModal" wire:loading.attr="disabled">
-                {{ __('Enroll users') }}
-            </x-button>
+								{{ __('Enroll users') }}
+							</x-button>
 							<x-button>Edit Profile</x-button>
 					</div>
 			</div>

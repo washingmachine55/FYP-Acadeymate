@@ -71,4 +71,9 @@ class User extends Authenticatable
 		return $this->belongsToMany(EducationalInstitute::class, 'enrolled_under');
 	}
 
+	public function guardians()
+	{
+		return $this->belongsToMany(\App\Models\Guardian::class, 'guardians', 'guardian_of_user_id', 'guardian_user_id');
+	}
+
 }

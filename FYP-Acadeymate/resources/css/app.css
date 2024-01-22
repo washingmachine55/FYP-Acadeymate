@@ -278,9 +278,9 @@ span.sidebar-span {
 }
 
 .action-container {
-	align-items: center;
-	justify-content: center;
-	display: flex;
+	/* align-items: center; */
+	/* justify-content: center; */
+	/* display: flex; */
 }
 
 a {

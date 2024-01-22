@@ -12,15 +12,15 @@ class GuardianController extends Controller
      */
     public function index()
     {
-        //
+		return redirect()->route('view-guardians');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for assigning a new resource.
      */
-    public function create()
+    public function assignGuardians()
     {
-        //
+		return redirect()->route('assign-guardians');
     }
 
     /**
