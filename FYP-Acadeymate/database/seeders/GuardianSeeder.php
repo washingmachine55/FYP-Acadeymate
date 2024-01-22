@@ -12,6 +12,6 @@ class GuardianSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		Factory::factoryForModel(\App\Models\Guardian::class)->times(5)->create(); // Use Factory::factory instead of factory
+		Factory::factoryForModel(\App\Models\Guardian::class)->times(15)->create(); // Use Factory::factory instead of factory
 	}
 }

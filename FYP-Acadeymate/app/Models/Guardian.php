@@ -17,8 +17,19 @@ class Guardian extends Model
 		'guardian_relationship_with_user', 'guardian_user_id', 'guardian_of_user_id',
 	];
 
-	public function users()
+	/* public function user()
 	{
 		return $this->belongsToMany(\App\Models\User::class, 'guardians', 'guardian_user_id', 'guardian_of_user_id');
+	} */
+
+	public function usersAsDependant()
+	{
+		// return $this->belongsToMany(\App\Models\User::class, 'guardians', 'guardian_of_user_id', 'id' );
+		return $this->belongsToMany(\App\Models\User::class, 'guardians', 'guardian_of_user_id', 'id' );
+	}
+	public function usersAsGuardian()
+	{
+		// return $this->belongsToMany(\App\Models\User::class, 'guardians', 'guardian_user_id', 'id');
+		return $this->belongsToMany(\App\Models\User::class, 'guardians', 'guardian_user_id', 'id');
 	}
 }

@@ -4,6 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use \App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class ViewGuardians extends Component
 {
@@ -12,7 +14,7 @@ class ViewGuardians extends Component
 	public $sortColumn = 'id';
 	public $sortDirection = 'asc';
 
-	public $guardians;
+	// public $guardians = [];
 
 
     public function render()
@@ -24,17 +26,35 @@ class ViewGuardians extends Component
 		// 	}])
 		// 	->get();
 
-		$guardians = \App\Models\Guardian::select('id', 'guardian_relationship_with_user', 'guardian_user_id', 'guardian_of_user_id')
-		->get();
+		//working codde but needs improvements
+		/* $guardians = DB::table('users')
+			->join('guardians', 'users.id', '=', 'guardians.guardian_user_id')
+			->select('users.id', 'users.name', 'users.email', 'users.user_role', 'guardians.id', 'guardians.guardian_relationship_with_user', 'guardians.guardian_user_id', 'guardians.guardian_of_user_id', 'guardians.created_at', 'guardians.updated_at')
+			->get();
 
-		foreach ($guardians as $guardian) {
-			dd($guardian->users);
-		};
+		$guardiansOfUsers = DB::table('users')
+			->join('guardians', 'users.id', '=', 'guardians.guardian_of_user_id')
+			->select('users.id', 'users.name', 'users.email', 'users.user_role', 'guardians.guardian_relationship_with_user', 'guardians.guardian_user_id', 'guardians.guardian_of_user_id')
+			->get();
 
+		return view('livewire.view-guardians', [
+			'guardians' => $guardians,
+			'guardiansOfUsers' => $guardiansOfUsers,
+		]); */
+
+		$guardians = \App\Models\Guardian::with(['usersAsGuardian' => function ($query) {
+			$query->select('users.id', 'users.name', 'users.email');
+		}, 'usersAsDependant' => function ($query) {
+			$query->select('users.id', 'users.name', 'users.email', 'users.user_role');
+		}])->get();
+
+		dd($guardians);
 
 		return view('livewire.view-guardians', [
 			'guardians' => $guardians,
 		]);
+
+
     }
 
 	// public function sortBy($column, $sortDirection)

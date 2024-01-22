@@ -22,7 +22,7 @@ class GuardianFactory extends Factory
 		// $user = User::whereDoesntHave('Guardian.users')->inRandomOrder()->first();
 		$guardian_user_id = User::where('user_role', 'Guardian')->inRandomOrder()->first();
 		$guardian_of_user_id = User::where('user_role', 'Student')
-			->whereDoesntHave('guardians')
+			// ->whereDoesntHave('guardians', 'guardian_of_user_id')
 			->inRandomOrder()
 			->first();
 
